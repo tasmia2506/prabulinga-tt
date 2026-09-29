@@ -6,7 +6,7 @@ export const DEFAULT_CONFIG = {
   phoneNumber: "+91 80501 72818",
   altPhoneNumber: "+91 80501 72818",
   email: "bookings@prabhulingtravels.com",
-  address: "Terdal–Shegunasi Road, near Nivaragi Textile, Terdal, Bagalkot District, Karnataka – 587315",
+  address: "Near Nivaragi Textile, Beside Savalagi Garage, Rabakavi Main Road, Terdal, Bagalkot District, Karnataka",
   location: "Terdal, Bagalkot District, Karnataka",
   busCount: 8,
   establishedYear: 2011,

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { DESTINATIONS } from '../data/destinationsData';
 import { X, ChevronLeft, ChevronRight, MapPin, ArrowRight, Clock } from 'lucide-react';
 
-export default function Destinations() {
+export default function Destinations({ onOpenBookingModal }) {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedGallery, setSelectedGallery] = useState(null); // { name: string, photos: string[], activeIdx: number }
 
@@ -181,9 +180,12 @@ export default function Destinations() {
                       {dest.duration || '2-4 Days'}
                     </span>
 
-                    <Link
-                      to={`/destinations/${dest.id}`}
-                      onClick={(e) => e.stopPropagation()}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenBookingModal?.({ serviceType: 'Bus', to: dest.name });
+                      }}
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
@@ -194,12 +196,15 @@ export default function Destinations() {
                         fontWeight: '700',
                         letterSpacing: '0.02em',
                         textTransform: 'uppercase',
-                        textDecoration: 'none',
+                        background: 'none',
+                        border: 'none',
+                        padding: 0,
+                        cursor: 'pointer',
                         whiteSpace: 'nowrap'
                       }}
                     >
                       Enquire Cab <ArrowRight size={15} />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

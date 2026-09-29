@@ -24,7 +24,6 @@ import ToursPage from './pages/ToursPage';
 import TourDetailPage from './pages/TourDetailPage';
 import DestinationsPage from './pages/DestinationsPage';
 import ServicesPage from './pages/ServicesPage';
-import DestinationDetailPage from './pages/DestinationDetailPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GeneralBookingPage from './pages/GeneralBookingPage';
@@ -155,22 +154,13 @@ export default function App() {
 
             <Route
               path="/destinations"
-              element={<DestinationsPage />}
+              element={<DestinationsPage onOpenBookingModal={handleOpenBookingModal} />}
             />
 
             <Route
               path="/services"
               element={
                 <ServicesPage
-                  onOpenBookingModal={handleOpenBookingModal}
-                />
-              }
-            />
-
-            <Route
-              path="/destinations/:id"
-              element={
-                <DestinationDetailPage
                   onOpenBookingModal={handleOpenBookingModal}
                 />
               }

@@ -4,7 +4,7 @@ import Destinations from '../components/Destinations';
 import MapFragment from '../components/scrapbook/MapFragment';
 import HeroCard from '../components/HeroCard';
 
-export default function DestinationsPage() {
+export default function DestinationsPage({ onOpenBookingModal }) {
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', minHeight: '100vh' }}>
       <Seo
@@ -74,7 +74,7 @@ export default function DestinationsPage() {
       </HeroCard>
 
       {/* Main Destinations Collage */}
-      <Destinations />
+      <Destinations onOpenBookingModal={onOpenBookingModal} />
     </div>
   );
 }
