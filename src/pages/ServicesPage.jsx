@@ -14,7 +14,7 @@ export default function ServicesPage({ onOpenBookingModal }) {
         overlayGradient="linear-gradient(180deg, rgba(20, 30, 24, 0.55) 0%, rgba(20, 30, 24, 0.35) 45%, rgba(20, 30, 24, 0.75) 100%)"
         rounded={0}
       >
-        <div style={{ padding: '1rem 0', textAlign: 'center', marginTop: '-9rem' }}>
+        <div className="services-hero-copy" style={{ padding: '1rem 0', textAlign: 'center', marginTop: '-9rem' }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <div
               style={{
@@ -104,6 +104,12 @@ export default function ServicesPage({ onOpenBookingModal }) {
 
       {/* Full Services Grid */}
       <ServicesSection onOpenBookingModal={onOpenBookingModal} />
+
+      <style>{`
+        @media (max-width: 760px) {
+          .services-hero-copy { margin-top: 0 !important; }
+        }
+      `}</style>
     </div>
   );
 }

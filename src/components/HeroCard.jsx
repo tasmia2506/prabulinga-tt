@@ -204,6 +204,25 @@ export default function HeroCard({
         )}
       </div>
 
+      {/* On mobile, wrapped hero copy grows much taller than the fixed/aspect-ratio
+          box, so a vertically-centered (or bottom-anchored) block can still rise
+          up into the sticky header's zone. Instead, let the box grow to fit its
+          content (auto height) and push everything down past the header with
+          top padding — this guarantees clearance no matter how tall the text gets. */}
+      {pullUnderHeader && (
+        <style>{`
+          @media (max-width: 760px) {
+            .hero-card {
+              aspect-ratio: auto !important;
+              min-height: 0 !important;
+              align-items: flex-start !important;
+              padding-top: 96px !important;
+              padding-bottom: ${wave ? '2.5rem' : '1.5rem'} !important;
+            }
+          }
+        `}</style>
+      )}
+
       {/* Large organic wave — flows the image into the page background */}
       {wave && (
         <svg
