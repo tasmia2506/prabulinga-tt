@@ -112,6 +112,17 @@ export default function TrustMarquee() {
             animation: none;
           }
         }
+        /* The site-wide scroll-reveal observer (SlowmoScrollObserver) matches these
+           track divs via its generic selectors and applies a staggered
+           opacity/transform reveal. Two duplicate tracks must always render as
+           pixel-identical clones for the infinite loop to be seamless, so any
+           independent transform/opacity here (and the differing per-sibling
+           delay) desyncs them and opens a visible gap once per loop. Neutralize it. */
+        .trust-marquee-track.slowmo-init {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
       `}</style>
     </section>
   );
