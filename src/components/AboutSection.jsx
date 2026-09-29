@@ -28,13 +28,14 @@ export default function AboutSection({ onOpenBookingModal }) {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
+            gridTemplateColumns: 'minmax(0, 1fr)',
             gap: '3rem',
             alignItems: 'flex-start'
           }}
+          className="about-intro"
         >
           {/* Left Column: Landmark Photo with Coordinate Caption */}
-          <div style={{ gridColumn: 'span 12 / span 12' }} className="about-left">
+          <div className="about-left">
             <div style={{ position: 'relative', border: '1px solid var(--color-border)' }}>
               <img
                 src="/terdal-gate.jpg"
@@ -93,7 +94,7 @@ export default function AboutSection({ onOpenBookingModal }) {
           </div>
 
           {/* Right Column: Editorial Story */}
-          <div style={{ gridColumn: 'span 12 / span 12' }} className="about-right">
+          <div className="about-right">
             <div
               style={{
                 display: 'flex',
@@ -205,7 +206,9 @@ export default function AboutSection({ onOpenBookingModal }) {
       </div>
 
       <style>{`
+        .about-left, .about-right { min-width: 0; }
         @media (min-width: 992px) {
+          .about-intro { grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
           .about-left { grid-column: span 6 / span 6 !important; }
           .about-right { grid-column: span 6 / span 6 !important; }
         }
