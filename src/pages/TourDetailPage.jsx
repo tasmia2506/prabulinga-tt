@@ -51,7 +51,7 @@ export default function TourDetailPage({ config, onOpenBookingModal }) {
 
       {/* Details Container */}
       <div className="container" style={{ marginTop: '3rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '2.5rem' }}>
           <div>
             <PaperCard paperType="sheet" rotation="-0.8deg" padding="2rem" style={{ borderLeft: '4px solid var(--color-terracotta)' }}>
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--color-ink)', marginBottom: '0.75rem' }}>

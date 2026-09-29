@@ -318,6 +318,7 @@ export default function ContactPage({ config }) {
       </div>
 
       <style>{`
+        .contact-two-col > * { min-width: 0; }
         @media (max-width: 860px) {
           .contact-two-col {
             grid-template-columns: 1fr !important;

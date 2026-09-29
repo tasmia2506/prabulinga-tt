@@ -176,7 +176,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {/* Row 1: Name & Phone */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>PASSENGER FULL NAME *</label>
                   <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Suresh Kumar" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
@@ -188,7 +188,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               </div>
 
               {/* Row 2: From & To Station */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>FROM STATION (ORIGIN) *</label>
                   <input type="text" required value={formData.fromStation} onChange={(e) => setFormData({ ...formData, fromStation: e.target.value })} placeholder="Enter Origin Station / City" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
@@ -229,7 +229,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               </div>
 
               {/* Row 4: Passengers & Berth Preference */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>NUMBER OF PASSENGERS</label>
                   <select value={formData.passengers} onChange={(e) => setFormData({ ...formData, passengers: e.target.value })} style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }}>
@@ -271,7 +271,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
         </TicketCard>
 
         {/* Feature Cards Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.75rem' }}>
           <PaperCard paperType="sheet" padding="1.75rem">
             <Train size={28} style={{ color: 'var(--color-forest)', marginBottom: '0.75rem' }} />
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: '700', color: 'var(--color-ink)', marginBottom: '0.35rem' }}>

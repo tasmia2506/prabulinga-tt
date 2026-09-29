@@ -135,7 +135,7 @@ export default function BusesPage({ onOpenBookingModal }) {
         </div>
 
         {/* Fleet Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '3rem 1.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: '3rem 1.75rem' }}>
           {filteredBuses.map((bus, idx) => (
             <TicketStub
               key={bus.id}

@@ -57,7 +57,7 @@ export default function BusDetailPage({ config, onOpenBookingModal }) {
 
       {/* Main Content */}
       <div className="container" style={{ marginTop: '3rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '2.5rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <PaperCard paperType="sheet" rotation="-0.8deg" padding="2rem">
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--color-ink)', marginBottom: '0.75rem' }}>

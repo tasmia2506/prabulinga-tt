@@ -126,7 +126,7 @@ export default function ToursPage({ onOpenBookingModal }) {
         </div>
 
         {/* Tour Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem 1.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '2rem 1.75rem' }}>
           {filteredPackages.map((pkg, idx) => {
             return (
               <PaperCard

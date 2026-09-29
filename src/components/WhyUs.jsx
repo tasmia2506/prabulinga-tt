@@ -30,15 +30,15 @@ export default function WhyUs() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gap: '2.5rem',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            gap: '2rem',
             alignItems: 'center',
             marginBottom: '3rem'
           }}
           className="whyus-intro"
         >
           {/* Left: Heading */}
-          <div style={{ gridColumn: 'span 12 / span 12' }} className="whyus-heading">
+          <div className="whyus-heading">
             <span
               style={{
                 fontFamily: 'var(--font-typewriter)',
@@ -70,7 +70,7 @@ export default function WhyUs() {
           </div>
 
           {/* Right: Route Map Image Card */}
-          <div style={{ gridColumn: 'span 12 / span 12' }} className="whyus-image">
+          <div className="whyus-image">
             <div
               style={{
                 width: '100%',
@@ -114,7 +114,7 @@ export default function WhyUs() {
         </div>
 
         {/* Feature Cards — No Dividers, White Cards for Contrast & Readability */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
           {FEATURES.map((feat) => {
             const Icon = feat.icon;
             return (
@@ -168,7 +168,9 @@ export default function WhyUs() {
       </div>
 
       <style>{`
+        .whyus-heading, .whyus-image { min-width: 0; }
         @media (min-width: 992px) {
+          .whyus-intro { grid-template-columns: repeat(12, minmax(0, 1fr)) !important; gap: 2.5rem !important; }
           .whyus-heading { grid-column: span 6 / span 6 !important; }
           .whyus-image { grid-column: span 6 / span 6 !important; }
         }

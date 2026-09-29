@@ -146,7 +146,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {filteredBuses.map((bus) => (
             <div key={bus.id} className="card" style={{ padding: '1.5rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', alignItems: 'center' }}>
                 
                 {/* Left Info Column */}
                 <div>

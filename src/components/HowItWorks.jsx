@@ -64,7 +64,7 @@ export default function HowItWorks() {
         </div>
 
         {/* 4 Steps Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 240px), 1fr))', gap: '1.75rem' }}>
           {steps.map((item, idx) => (
             <PaperCard
               key={idx}

@@ -42,6 +42,7 @@ export default function Footer({ config, onToggleConfigDrawer }) {
     >
       <div className="container">
         <div
+          className="footer-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'minmax(240px, 1.3fr) repeat(3, minmax(160px, 1fr))',
@@ -240,6 +241,15 @@ export default function Footer({ config, onToggleConfigDrawer }) {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+        }
+        @media (max-width: 560px) {
+          .footer-grid { grid-template-columns: minmax(0, 1fr) !important; }
+        }
+      `}</style>
     </footer>
   );
 }
