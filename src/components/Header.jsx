@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Compass, Phone, MessageSquare, Menu, X, ChevronRight } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ChevronRight, Moon, Sun } from 'lucide-react';
 import { PearlButton } from './ui/pearl-button';
 
-export default function Header({ config, onOpenBookingModal }) {
+export default function Header({ config, onOpenBookingModal, isDarkMode, onToggleDarkMode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -34,12 +34,9 @@ export default function Header({ config, onOpenBookingModal }) {
     { label: 'Contact', path: '/contact' },
   ];
 
-  const headerBg = isHome && !scrolled
-    ? 'rgba(18, 25, 20, 0.25)'
-    : 'rgba(253, 251, 247, 0.96)';
-
-  const textColor = isHome && !scrolled ? '#FFFFFF' : 'var(--color-ink)';
-  const tagColor = isHome && !scrolled ? '#FDFBF7' : 'var(--color-terracotta)';
+  const blended = isHome && !scrolled;
+  const textColor = blended ? '#FFFFFF' : 'var(--color-ink)';
+  const tagColor = 'var(--color-terracotta)';
 
   return (
     <header
@@ -47,61 +44,57 @@ export default function Header({ config, onOpenBookingModal }) {
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        backgroundColor: headerBg,
-        borderBottom: isHome && !scrolled ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid var(--color-border)',
+        backgroundColor: blended ? 'transparent' : 'var(--color-paper-sheet)',
+        borderBottom: blended ? 'none' : '1px solid var(--color-border)',
         boxShadow: scrolled ? 'var(--shadow-paper)' : 'none',
         transition: 'all 0.35s ease'
       }}
     >
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '72px', position: 'relative' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '72px', position: 'relative', gap: '1rem' }}>
         {/* Brand Logo */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-          <div
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', flexShrink: 0 }}>
+          <img
+            src="/logo.jpg"
+            alt="Prabhuling Travel Agency & Online Services"
             style={{
-              width: '40px',
-              height: '40px',
-              backgroundColor: 'var(--color-forest)',
-              color: '#FFFFFF',
-              borderRadius: '4px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              width: '52px',
+              height: '52px',
+              borderRadius: '50%',
+              objectFit: 'cover',
               boxShadow: '0 3px 10px rgba(0,0,0,0.15)',
               border: '1px solid rgba(255,255,255,0.2)'
             }}
-          >
-            <Compass size={22} style={{ color: 'var(--color-terracotta)' }} />
-          </div>
-          <div>
+          />
+          <div className="header-brand-text">
             <div
               className="font-display"
               style={{
-                fontSize: '1.4rem',
+                fontSize: '1.15rem',
                 fontWeight: '800',
                 color: textColor,
-                lineHeight: '1',
+                lineHeight: '1.15',
                 letterSpacing: '-0.01em'
               }}
             >
-              PRABHULING
+              PRABHULING TRAVEL AGENCY
             </div>
             <div
               className="font-typewriter"
               style={{
-                fontSize: '0.65rem',
+                fontSize: '0.62rem',
                 color: tagColor,
                 lineHeight: '1',
-                letterSpacing: '0.12em',
+                letterSpacing: '0.1em',
                 marginTop: '2px'
               }}
             >
-              TRAVELS & JOURNEYS
+              & ONLINE SERVICES
             </div>
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav style={{ display: 'none', lgDisplay: 'flex', gap: '1.25rem', alignItems: 'center' }} className="desktop-nav">
+        {/* Desktop Navigation — Centered */}
+        <nav style={{ display: 'none', flex: 1, justifyContent: 'center', gap: '1.5rem', alignItems: 'center' }} className="desktop-nav">
           {navLinks.map((link, idx) => (
             <NavLink
               key={idx}
@@ -111,12 +104,11 @@ export default function Header({ config, onOpenBookingModal }) {
               style={({ isActive }) => ({
                 fontSize: '0.875rem',
                 fontWeight: isActive ? '700' : '600',
-                color: isActive
-                  ? 'var(--color-terracotta)'
-                  : isHome && !scrolled ? '#FDFBF7' : 'var(--color-ink)',
+                color: isActive ? 'var(--color-terracotta)' : textColor,
                 textDecoration: 'none',
                 transition: 'color 0.2s',
                 padding: '0.25rem 0',
+                whiteSpace: 'nowrap',
                 borderBottom: isActive ? '2px solid var(--color-terracotta)' : '2px solid transparent'
               })}
             >
@@ -125,11 +117,51 @@ export default function Header({ config, onOpenBookingModal }) {
           ))}
         </nav>
 
-        {/* Right Primary CTA Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        {/* Right: Phone Pill + Primary CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+          <a
+            href={`tel:${(config?.phoneNumber || '').replace(/[^0-9+]/g, '')}`}
+            className="header-phone-pill"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.55rem 1rem',
+              borderRadius: '30px',
+              backgroundColor: blended ? 'rgba(255, 255, 255, 0.08)' : 'var(--color-paper-cream)',
+              border: blended ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid var(--color-border)',
+              color: textColor,
+              fontSize: '0.85rem',
+              fontWeight: '700',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            <Phone size={15} style={{ color: 'var(--color-terracotta)' }} />
+            {config?.phoneNumber}
+          </a>
+
           <Link to="/booking" style={{ textDecoration: 'none' }} className="header-cta-btn">
             <PearlButton label="BOOK A TRIP" />
           </Link>
+
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={onToggleDarkMode}
+            style={{
+              display: 'inline-flex',
+              padding: '0.5rem',
+              borderRadius: '4px',
+              border: blended ? '1px solid rgba(255,255,255,0.3)' : '1px solid var(--color-border)',
+              backgroundColor: blended ? 'rgba(255,255,255,0.08)' : 'var(--color-paper-cream)',
+              color: textColor,
+              cursor: 'pointer'
+            }}
+            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -138,8 +170,8 @@ export default function Header({ config, onOpenBookingModal }) {
               display: 'inline-flex',
               padding: '0.5rem',
               borderRadius: '4px',
-              border: `1px solid ${isHome && !scrolled ? 'rgba(255,255,255,0.3)' : 'var(--color-border)'}`,
-              backgroundColor: isHome && !scrolled ? 'rgba(0,0,0,0.2)' : 'var(--color-paper-sheet)',
+              border: blended ? '1px solid rgba(255,255,255,0.3)' : '1px solid var(--color-border)',
+              backgroundColor: blended ? 'rgba(255,255,255,0.08)' : 'var(--color-paper-cream)',
               color: textColor
             }}
             className="mobile-menu-btn"
@@ -154,8 +186,8 @@ export default function Header({ config, onOpenBookingModal }) {
       {isMobileMenuOpen && (
         <div
           style={{
-            backgroundColor: 'var(--color-paper-sheet)',
-            borderTop: '1px solid var(--color-border)',
+            backgroundColor: blended ? 'var(--color-ink)' : 'var(--color-paper-sheet)',
+            borderTop: blended ? '1px solid rgba(255,255,255,0.1)' : '1px solid var(--color-border)',
             padding: '1.25rem 1.5rem',
             boxShadow: 'var(--shadow-stacked)',
             position: 'relative'
@@ -172,23 +204,29 @@ export default function Header({ config, onOpenBookingModal }) {
                 style={({ isActive }) => ({
                   fontSize: '1rem',
                   fontWeight: isActive ? '700' : '600',
-                  color: isActive ? 'var(--color-terracotta)' : 'var(--color-ink)',
+                  color: isActive ? 'var(--color-terracotta)' : textColor,
                   padding: '0.5rem 0',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  borderBottom: '1px solid var(--color-border)',
+                  borderBottom: blended ? '1px solid rgba(255,255,255,0.12)' : '1px solid var(--color-border)',
                   textDecoration: 'none'
                 })}
               >
                 <span>{link.label}</span>
-                <ChevronRight size={16} style={{ color: 'var(--color-ink-light)' }} />
+                <ChevronRight size={16} style={{ color: blended ? 'rgba(255,255,255,0.5)' : 'var(--color-ink-light)' }} />
               </NavLink>
             ))}
           </div>
 
-
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <a
+              href={`tel:${(config?.phoneNumber || '').replace(/[^0-9+]/g, '')}`}
+              className="btn btn-outline"
+              style={{ width: '100%', textDecoration: 'none', borderColor: blended ? 'rgba(255,255,255,0.3)' : 'var(--color-border-strong)', color: textColor, backgroundColor: 'transparent' }}
+            >
+              <Phone size={18} /> {config?.phoneNumber}
+            </a>
             <Link
               to="/booking"
               style={{ textDecoration: 'none', width: '100%' }}
@@ -219,8 +257,14 @@ export default function Header({ config, onOpenBookingModal }) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: inline-flex !important; }
         }
+        @media (max-width: 1079px) {
+          .header-phone-pill { display: none !important; }
+        }
         @media (max-width: 480px) {
           .header-cta-btn { display: none !important; }
+        }
+        @media (max-width: 860px) {
+          .header-brand-text { display: none !important; }
         }
       `}</style>
     </header>

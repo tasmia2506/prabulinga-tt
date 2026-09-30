@@ -8,7 +8,7 @@ const FAQS = [
   },
   {
     q: "Do you operate your own buses or resell third-party tickets?",
-    a: "We directly own & operate our 7-bus luxury fleet across AC/Non-AC sleeper & seater coaches, so you always deal with the fleet owner, not a reseller."
+    a: "We directly own & operate our 3-bus luxury fleet across AC/Non-AC sleeper & seater coaches, so you always deal with the fleet owner, not a reseller."
   },
   {
     q: "Can I book flights & train tickets through the same agency?",

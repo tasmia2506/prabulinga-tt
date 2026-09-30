@@ -84,18 +84,20 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
         {/* Modal Header */}
         <div
           style={{
-            backgroundColor: 'var(--color-forest)',
+            backgroundColor: 'var(--color-ink-solid)',
             color: '#FFFFFF',
             padding: '1.5rem 1.75rem',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            gap: '0.75rem',
             position: 'sticky',
             top: 0,
             zIndex: 1
           }}
         >
-          <div>
+          <div style={{ minWidth: 0 }}>
             <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-terracotta)', letterSpacing: '0.12em' }}>
               OFFICIAL TRAVEL MANIFESTO
             </div>
@@ -210,6 +212,11 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
               <button type="submit" className="btn btn-whatsapp" style={{ width: '100%', padding: '0.9rem 1rem', fontSize: '1rem', gap: '0.6rem' }}>
                 <MessageSquare size={20} /> Launch WhatsApp Booking →
               </button>
+
+              <p style={{ fontSize: '0.75rem', color: 'var(--color-ink-light)', textAlign: 'center', marginTop: '0.75rem' }}>
+                By submitting, you agree to be contacted about this enquiry per our{' '}
+                <a href="/privacy-policy" target="_blank" rel="noreferrer" style={{ color: 'var(--color-terracotta-hover)', fontWeight: '700' }}>Privacy Policy</a>.
+              </p>
             </form>
           )}
         </div>

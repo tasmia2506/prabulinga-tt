@@ -2,16 +2,22 @@ import React from 'react';
 import ServicesSection from '../components/ServicesSection';
 import HeroCard from '../components/HeroCard';
 import { Headphones, ShieldCheck, Star } from 'lucide-react';
+import Seo from '../components/Seo';
 
 export default function ServicesPage({ onOpenBookingModal }) {
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title="Our Services"
+        description="Bus ticket booking, flight & train assistance, tour packages, and bus/vehicle rental — full-service travel desk from Prabhuling Travel Agency & Online Services."
+        path="/services"
+      />
       {/* Hero Banner */}
       <HeroCard
         image="/services-hero.jpg"
         imageAlt="Prabhuling Travel Agency — Full Service Desk"
         aspectRatio="1600 / 899"
-        overlayGradient="linear-gradient(180deg, rgba(20, 30, 24, 0.55) 0%, rgba(20, 30, 24, 0.35) 45%, rgba(20, 30, 24, 0.75) 100%)"
+        overlayGradient="linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.75) 100%)"
         rounded={0}
       >
         <div className="services-hero-copy" style={{ padding: '1rem 0', textAlign: 'center', marginTop: '-9rem' }}>

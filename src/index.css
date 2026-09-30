@@ -4,30 +4,35 @@
    ========================================================================== */
 
 :root {
-  /* Physical Canvas & Paper Swatches — Dusty White / Granite & Misty Gray Palette */
-  --color-paper-bg: #FDFCF3;        /* Dusty White Desk Canvas Background */
-  --color-paper-sheet: #FFFCF0;     /* Crisp Dusty White Paper Sheet */
-  --color-paper-cream: #F1F0E7;     /* Slightly Toned Paper */
-  --color-paper-sand: #E3E2D8;      /* Neutral Sand-Gray Paper Layer */
-  --color-paper-kraft: #D2D1C6;     /* Kraft Paper / Cardboard Stub */
-  --color-paper-dark: #C1C0B5;      /* Vintage Paper Border/Accent */
+  /* Physical Canvas & Paper Swatches — Black / Yellow / Off-White Palette Only */
+  --color-paper-bg: #FAF6E9;        /* Light Cream Desk Canvas Background */
+  --color-paper-sheet: #FFFCF0;     /* Crisp Off-White Paper Sheet */
+  --color-paper-cream: #F1F0E7;     /* Slightly Toned Off-White */
+  --color-paper-sand: #F5EFD6;      /* Pale Yellow-White Paper Layer */
+  --color-paper-kraft: #EDE1B0;     /* Pale Yellow Kraft / Cardboard Stub */
+  --color-paper-dark: #E0CE8A;      /* Deeper Pale Yellow Paper Border/Accent */
 
   /* Dark Ink Swatches */
-  --color-ink: #2C2D27;             /* Granite Gray Ink (Headings/Body) */
-  --color-ink-muted: #646661;       /* Misty Gray Text */
-  --color-ink-light: #9A9C96;       /* Light Caption & Perforations */
+  --color-ink: #000000;             /* Black Ink (Headings/Body) — flips light in dark mode */
+  --color-ink-muted: rgba(0, 0, 0, 0.65);   /* Muted Black Text */
+  --color-ink-light: rgba(0, 0, 0, 0.45);   /* Light Black Caption & Perforations */
 
-  /* Sophisticated Editorial Accents */
-  --color-forest: #2C2D27;          /* Granite Gray (replaces Forest Green) */
-  --color-forest-dark: #1D1E1A;
-  --color-forest-soft: #ECECE6;
+  /* Always-black surface — for solid dark chips/bars (icon buttons, CTA bands)
+     that must stay black regardless of light/dark mode, decoupled from --color-ink
+     which flips to a light color in dark mode for text legibility. */
+  --color-ink-solid: #000000;
 
-  --color-terracotta: #FFD63D;      /* Alarming Yellow (replaces Terracotta) */
+  /* Editorial Accents — Black */
+  --color-forest: #000000;
+  --color-forest-dark: #1A1A1A;
+  --color-forest-soft: #FFF6D6;
+
+  --color-terracotta: #FFD63D;      /* Primary Yellow Accent */
   --color-terracotta-hover: #E6B800;
   --color-terracotta-soft: #FFF6D6;
 
-  --color-ocean-blue: #646661;      /* Misty Gray (replaces Ocean Blue) */
-  --color-ocean-soft: #ECECE6;
+  --color-ocean-blue: #000000;      /* Secondary — mapped to Black */
+  --color-ocean-soft: #FFF6D6;
 
   --color-gold-stamp: #B38F00;      /* Deep Yellow Stamp */
 
@@ -47,8 +52,9 @@
   --color-text-muted: var(--color-ink-muted);
   --color-text-light: var(--color-ink-light);
 
-  --color-border: rgba(100, 102, 97, 0.28);
-  --color-border-strong: rgba(44, 45, 39, 0.4);
+  --color-border: rgba(0, 0, 0, 0.18);
+  --color-border-strong: rgba(0, 0, 0, 0.4);
+  --color-dot-pattern: rgba(0, 0, 0, 0.14);
 
   /* Typography System — League Spartan (Display, Headings) + Manrope (Sans, Body & UI) + Cormorant Garamond (Elegant Italic Accent) */
   --font-display: 'League Spartan', system-ui, -apple-system, sans-serif;    /* League Spartan Bold Headings */
@@ -63,10 +69,10 @@
   --font-body: var(--font-sans);
 
   /* Tactile Physical Shadows */
-  --shadow-paper: 0 4px 18px -2px rgba(34, 31, 29, 0.08), 0 2px 6px rgba(34, 31, 29, 0.04);
-  --shadow-photo: 0 10px 28px -4px rgba(34, 31, 29, 0.16), 0 4px 10px rgba(34, 31, 29, 0.06);
-  --shadow-ticket: 0 6px 20px -3px rgba(34, 31, 29, 0.12);
-  --shadow-stacked: 0 16px 38px -6px rgba(34, 31, 29, 0.22), 0 6px 14px rgba(34, 31, 29, 0.08);
+  --shadow-paper: 0 4px 18px -2px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-photo: 0 10px 28px -4px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.06);
+  --shadow-ticket: 0 6px 20px -3px rgba(0, 0, 0, 0.12);
+  --shadow-stacked: 0 16px 38px -6px rgba(0, 0, 0, 0.22), 0 6px 14px rgba(0, 0, 0, 0.08);
 
   /* Radius */
   --radius-sm: 4px;
@@ -79,6 +85,40 @@
   --measure-sm: 420px;
   --measure-md: 640px;
   --measure-lg: 768px;
+}
+
+/* Dark Mode — opt-in only, toggled by the visitor via the header switch
+   (see Header.jsx / App.jsx), not applied automatically from OS preference.
+   Only the paper (surface) and ink (text) tokens flip; --color-ink-solid and
+   the yellow accent stay fixed so solid black chips/bars and yellow buttons
+   keep working exactly as designed on top of the new dark surfaces. */
+html.dark-mode {
+    --color-paper-bg: #15130D;
+    --color-paper-sheet: #1C1911;
+    --color-paper-cream: #221E14;
+    --color-paper-sand: #2A2417;
+    --color-paper-kraft: #332C1B;
+    --color-paper-dark: #4A3F22;
+
+    --color-ink: #F5EFDC;
+    --color-ink-muted: rgba(245, 239, 220, 0.68);
+    --color-ink-light: rgba(245, 239, 220, 0.48);
+
+    --color-forest: #F5EFDC;
+    --color-forest-dark: #FFFFFF;
+    --color-forest-soft: #332C1B;
+
+    --color-ocean-blue: #F5EFDC;
+    --color-ocean-soft: #332C1B;
+
+    --color-border: rgba(245, 239, 220, 0.16);
+    --color-border-strong: rgba(245, 239, 220, 0.32);
+    --color-dot-pattern: rgba(245, 239, 220, 0.06);
+
+    --shadow-paper: 0 4px 18px -2px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.2);
+    --shadow-photo: 0 10px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(0, 0, 0, 0.25);
+    --shadow-ticket: 0 6px 20px -3px rgba(0, 0, 0, 0.4);
+    --shadow-stacked: 0 16px 38px -6px rgba(0, 0, 0, 0.55), 0 6px 14px rgba(0, 0, 0, 0.3);
 }
 
 /* Reset & Base Setup */
@@ -107,7 +147,7 @@ html.lenis, html.lenis body {
 body {
   font-family: var(--font-sans);
   background-color: var(--color-paper-bg);
-  background-image: radial-gradient(rgba(100, 102, 97, 0.14) 1px, transparent 0);
+  background-image: radial-gradient(var(--color-dot-pattern), transparent 0);
   background-size: 24px 24px;
   color: var(--color-ink);
   line-height: 1.6;
@@ -208,7 +248,7 @@ input:focus, select:focus, textarea:focus {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: linear-gradient(135deg, rgba(44, 45, 39, 0.07) 0%, rgba(230, 184, 0, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.07) 0%, rgba(230, 184, 0, 0.08) 100%);
   color: var(--color-forest);
   font-family: var(--font-sans);
   font-size: 0.775rem;
@@ -218,8 +258,8 @@ input:focus, select:focus, textarea:focus {
   padding: 0.4rem 1.15rem;
   border-radius: 30px;
   margin-bottom: 0.85rem;
-  border: 1px solid rgba(44, 45, 39, 0.18);
-  box-shadow: 0 2px 8px rgba(44, 45, 39, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.25s ease;
 }
 
@@ -267,7 +307,7 @@ input:focus, select:focus, textarea:focus {
   height: 42px;
   padding: 0 20px;
   background-color: #FFD63D;
-  color: #2C2D27;
+  color: #000000;
   font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -310,7 +350,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .pearl-button:focus-visible {
-  outline: 2px solid #2C2D27;
+  outline: 2px solid #000000;
   outline-offset: 2px;
 }
 
@@ -351,9 +391,9 @@ input:focus, select:focus, textarea:focus {
   height: 44px;
   flex-shrink: 0;
   border-radius: 12px;
-  background-color: var(--color-ink);
+  background-color: var(--color-ink-solid);
   color: #FFFFFF;
-  border: 1px solid var(--color-ink);
+  border: 1px solid var(--color-ink-solid);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -366,7 +406,7 @@ input:focus, select:focus, textarea:focus {
 
 .btn-primary {
   background-color: var(--color-terracotta);
-  color: var(--color-ink);
+  color: var(--color-ink-solid);
   border: 1px solid var(--color-terracotta-hover);
   box-shadow: 0 4px 14px rgba(230, 184, 0, 0.3);
 }
@@ -378,16 +418,16 @@ input:focus, select:focus, textarea:focus {
 }
 
 .btn-secondary {
-  background-color: var(--color-forest);
+  background-color: var(--color-ink-solid);
   color: #FFFFFF;
   border: 1px solid var(--color-forest-dark);
-  box-shadow: 0 4px 14px rgba(44, 45, 39, 0.28);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-forest-dark);
   transform: translateY(-2px);
-  box-shadow: 0 7px 20px rgba(44, 45, 39, 0.38);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.38);
 }
 
 .btn-outline {
@@ -627,12 +667,12 @@ input:focus, select:focus, textarea:focus {
   background: var(--color-paper-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #C4C3B8;
+  background: #E0CE8A;
   border-radius: 4px;
   border: 2px solid var(--color-paper-bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9A9C96;
+  background: #FFD63D;
 }
 
 /* Animations */

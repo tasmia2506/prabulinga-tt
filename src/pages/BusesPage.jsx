@@ -5,7 +5,7 @@ import TicketStub from '../components/scrapbook/TicketStub';
 import HeroCard from '../components/HeroCard';
 import { Bus, ShieldCheck, Star } from 'lucide-react';
 
-export default function BusesPage({ onOpenBookingModal }) {
+export default function BusesPage({ onOpenBookingModal, config }) {
   const [filterType, setFilterType] = useState('All');
 
   const filteredBuses = FLEET.filter(bus => {
@@ -19,7 +19,7 @@ export default function BusesPage({ onOpenBookingModal }) {
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
       <Seo
         title="Our Bus Fleet"
-        description="Prabhuling Travel Agency directly operates 8 modern AC & Non-AC sleeper & seater buses across Karnataka & South India. View specs, fares & reserve your seat pass online."
+        description="Prabhuling Travel Agency directly operates 3 modern AC & Non-AC sleeper & seater buses across Karnataka & South India. View specs, fares & reserve your seat pass online."
         path="/buses"
       />
 
@@ -28,7 +28,7 @@ export default function BusesPage({ onOpenBookingModal }) {
         image="/buses-fleet-hero.jpg"
         imageAlt="Prabhuling Travel Agency — Our Luxury Bus Fleet"
         imageStyle={{ objectPosition: 'center 100%' }}
-        overlayGradient="linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.45) 100%)"
+        overlayGradient="linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.15) 70%), linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.5) 100%)"
         minHeight="640px"
         pullUnderHeader={false}
         rounded={0}
@@ -51,7 +51,7 @@ export default function BusesPage({ onOpenBookingModal }) {
               }}
             >
               <span style={{ width: '28px', height: '2px', backgroundColor: 'var(--color-terracotta)', display: 'inline-block' }} />
-              OFFICIAL FLEET DOSSIER • 7 OPERATED BUSES
+              OFFICIAL FLEET DOSSIER • 3 OPERATED BUSES
               <span style={{ width: '28px', height: '2px', backgroundColor: 'var(--color-terracotta)', display: 'inline-block' }} />
             </div>
 
@@ -66,11 +66,11 @@ export default function BusesPage({ onOpenBookingModal }) {
                 textShadow: '0 4px 20px rgba(0,0,0,0.5)'
               }}
             >
-              Our 8-Bus Luxury Fleet
+              Our 3-Bus Luxury Fleet
             </h1>
 
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.3rem', color: '#FFFFFF', marginBottom: '1.1rem' }}>
-              Eight coaches, one promise of comfort.
+              Three coaches, one promise of comfort.
             </p>
 
             <p
@@ -82,7 +82,7 @@ export default function BusesPage({ onOpenBookingModal }) {
                 textShadow: '0 2px 10px rgba(0,0,0,0.5)'
               }}
             >
-              Prabhuling Travel Agency directly operates <strong>7 modern AC & Non-AC sleeper & executive seater buses</strong>. Every coach is inspected daily, sanitised, & assigned to experienced long-distance highway drivers.
+              Prabhuling Travel Agency directly operates <strong>3 modern AC & Non-AC sleeper & executive seater buses</strong>. Every coach is inspected daily, sanitised, & assigned to experienced long-distance highway drivers.
             </p>
           </div>
 
@@ -93,7 +93,7 @@ export default function BusesPage({ onOpenBookingModal }) {
                   <Bus size={18} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <strong style={{ display: 'block', fontSize: '0.9rem', color: '#FFFFFF', fontWeight: '700', whiteSpace: 'nowrap' }}>7 Owned</strong>
+                  <strong style={{ display: 'block', fontSize: '0.9rem', color: '#FFFFFF', fontWeight: '700', whiteSpace: 'nowrap' }}>3 Owned</strong>
                   <span style={{ display: 'block', fontSize: '0.775rem', color: 'rgba(255, 255, 255, 0.7)' }}>Luxury Coaches</span>
                 </div>
               </div>
@@ -142,16 +142,99 @@ export default function BusesPage({ onOpenBookingModal }) {
               ticketType={`PASSENGER BUS PASS #${idx + 1}`}
               title={bus.name}
               subtitle={bus.specLine || `${bus.type} (${bus.capacity} Seats)`}
-              origin={['bus-1', 'bus-8'].includes(bus.id) ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[0].trim() : 'Bengaluru')}
-              destination={['bus-1', 'bus-8'].includes(bus.id) ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[1]?.split('(')[0].trim() : 'South India')}
+              origin={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[0].trim() : 'Bengaluru')}
+              destination={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[1]?.split('(')[0].trim() : 'South India')}
               price={bus.startingPrice ? `₹${bus.startingPrice}/seat` : 'Contact for rate'}
               details={bus.amenities || bus.features || ['AC Sleeper', 'Pushback Seats', 'Charging Ports', 'GPS Tracking']}
               stampText="OPERATED FLEET"
               status="OPERATIONAL"
               image={bus.image}
               onBook={() => onOpenBookingModal({ service: 'Bus Rental', busId: bus.id, busName: bus.name })}
+              phoneNumber={config?.phoneNumber}
+              whatsappNumber={config?.whatsappNumber}
             />
           ))}
+        </div>
+
+        {/* Route Info — Terdal-Bengaluru Operators */}
+        <div
+          style={{
+            marginTop: '3.5rem',
+            backgroundColor: 'var(--color-paper-sheet)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '20px',
+            padding: '2rem 2.25rem'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem' }}>
+            <Bus size={20} style={{ color: 'var(--color-terracotta)' }} />
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--color-ink)' }}>
+              Terdal ↔ Bengaluru Route
+            </h3>
+          </div>
+
+          <p style={{ fontSize: '0.95rem', color: 'var(--color-ink-muted)', lineHeight: '1.7', marginBottom: '1.25rem' }}>
+            4 buses ply the Terdal ↔ Bengaluru route daily. Let us know which operator you'd like, and we'll help you book your seat:
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1rem' }}>
+            {['Vijayanand Travels', 'Royal Travels', 'Varalakshmi Travels', 'Siddeshwara Travels'].map((operator) => (
+              <div
+                key={operator}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.75rem',
+                  padding: '1.1rem 1.15rem',
+                  backgroundColor: 'var(--color-paper-cream)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '14px',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 10px 22px -6px rgba(0, 0, 0, 0.18)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <div
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '10px',
+                      backgroundColor: 'var(--color-forest-soft)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Bus size={18} style={{ color: 'var(--color-forest)' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: '700', color: 'var(--color-ink)' }}>
+                      {operator}
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--color-ink-muted)' }}>
+                      Terdal → Bengaluru
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  className="btn btn-outline btn-sm"
+                  style={{ width: '100%', justifyContent: 'center' }}
+                  onClick={() => onOpenBookingModal({ serviceType: 'Bus', selectedBus: operator, from: 'Terdal', to: 'Bengaluru' })}
+                >
+                  Book with {operator.split(' ')[0]} →
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function CtaSection({ onOpenBookingModal }) {
   return (
     <section
       style={{
-        backgroundColor: 'var(--color-ink)',
+        backgroundColor: 'var(--color-ink-solid)',
         padding: '5.5rem 0',
         position: 'relative',
         overflow: 'hidden'

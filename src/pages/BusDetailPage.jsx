@@ -23,7 +23,7 @@ export default function BusDetailPage({ config, onOpenBookingModal }) {
       <section style={{ backgroundColor: 'var(--color-paper-sheet)', borderBottom: '1px solid var(--color-border)', padding: '3.5rem 0 3rem 0', position: 'relative' }}>
         <div className="container">
           <Link to="/buses" style={{ color: 'var(--color-terracotta)', fontWeight: '700', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '1rem', display: 'inline-block' }}>
-            ← Back to All 7 Operated Buses
+            ← Back to All 3 Operated Buses
           </Link>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem' }}>
@@ -46,11 +46,11 @@ export default function BusDetailPage({ config, onOpenBookingModal }) {
               </h1>
 
               <p style={{ fontSize: '1.075rem', color: 'var(--color-ink-muted)' }}>
-                {bus.type} • Capacity: {bus.capacity} Seats
+                {bus.specLine || `${bus.type} • Capacity: ${bus.capacity} Seats`}
               </p>
             </div>
 
-            <TravelStamp text="8-BUS FLEET" size="medium" color="var(--color-gold-stamp)" rotation="-6deg" />
+            <TravelStamp text="3-BUS FLEET" size="medium" color="var(--color-gold-stamp)" rotation="-6deg" />
           </div>
         </div>
       </section>

@@ -17,7 +17,7 @@ export const PearlButton = ({
     height: "42px",
     padding: "0 20px",
     backgroundColor: isHovered ? "#E6B800" : "#FFD63D",
-    color: "#2C2D27",
+    color: "#000000",
     fontFamily: "var(--font-sans), system-ui, sans-serif",
     fontSize: "0.8125rem",
     fontWeight: "700",

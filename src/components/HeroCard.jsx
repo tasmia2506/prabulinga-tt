@@ -37,7 +37,7 @@ export default function HeroCard({
   contentStyle,
 }) {
   const defaultOverlay =
-    'linear-gradient(180deg, rgba(18, 25, 20, 0.5) 0%, rgba(18, 25, 20, 0.28) 45%, rgba(18, 25, 20, 0.8) 100%)';
+    'linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0.8) 100%)';
 
   const alignStyles =
     align === 'right'
@@ -183,7 +183,7 @@ export default function HeroCard({
                 className="btn"
                 style={{
                   backgroundColor: 'var(--color-terracotta)',
-                  color: '#2C2D27',
+                  color: '#000000',
                   padding: '1rem 2.2rem',
                   fontSize: '0.95rem',
                   fontWeight: 700,

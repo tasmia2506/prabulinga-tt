@@ -78,7 +78,7 @@ export default function WhyUs() {
                 borderRadius: 'var(--radius-card-lg)',
                 overflow: 'hidden',
                 border: '3px solid var(--color-paper-sheet)',
-                boxShadow: '0 10px 28px -4px rgba(44, 45, 39, 0.35)',
+                boxShadow: '0 10px 28px -4px rgba(0, 0, 0, 0.35)',
                 position: 'relative',
                 backgroundColor: '#F3D9A4'
               }}
@@ -123,7 +123,7 @@ export default function WhyUs() {
                 style={{
                   backgroundColor: 'var(--color-paper-sheet)',
                   borderRadius: 'var(--radius-card-lg)',
-                  boxShadow: '0 6px 18px -4px rgba(44, 45, 39, 0.2)',
+                  boxShadow: '0 6px 18px -4px rgba(0, 0, 0, 0.2)',
                   padding: '1.5rem'
                 }}
               >

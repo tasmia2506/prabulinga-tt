@@ -163,10 +163,10 @@ export default function ContactPage({ config }) {
             </div>
 
             {/* Operating Hours Bar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.1rem 1.25rem', borderRadius: '12px', backgroundColor: '#1B140D', color: '#FFFFFF' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.1rem 1.25rem', borderRadius: '12px', backgroundColor: '#000000', color: '#FFFFFF' }}>
               <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, position: 'relative' }}>
                 <Clock size={18} />
-                <span style={{ position: 'absolute', top: '-2px', right: '-2px', width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#4ADE80', border: '2px solid #1B140D' }} />
+                <span style={{ position: 'absolute', top: '-2px', right: '-2px', width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--color-terracotta)', border: '2px solid #000000' }} />
               </div>
               <div>
                 <strong style={{ display: 'block', fontSize: '0.9rem', letterSpacing: '0.03em' }}>
@@ -276,6 +276,12 @@ export default function ContactPage({ config }) {
                         Transparent per-seat & package pricing · No hidden charges
                       </span>
                     </div>
+
+                    <p style={{ fontSize: '0.75rem', color: 'var(--color-ink-light)' }}>
+                      By submitting, you agree to be contacted about this enquiry per our{' '}
+                      <a href="/privacy-policy" target="_blank" rel="noreferrer" style={{ color: 'var(--color-gold-stamp)', fontWeight: '700' }}>Privacy Policy</a>{' '}
+                      and <a href="/terms" target="_blank" rel="noreferrer" style={{ color: 'var(--color-gold-stamp)', fontWeight: '700' }}>Terms &amp; Conditions</a>.
+                    </p>
                   </form>
                 </>
               )}

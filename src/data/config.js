@@ -8,7 +8,7 @@ export const DEFAULT_CONFIG = {
   email: "bookings@prabhulingtravels.com",
   address: "Near Nivaragi Textile, Beside Savalagi Garage, Rabakavi Main Road, Terdal, Bagalkot District, Karnataka",
   location: "Terdal, Bagalkot District, Karnataka",
-  busCount: 8,
+  busCount: 3,
   establishedYear: 2011,
   currency: "₹",
   workingHours: "Monday–Sunday, 10:00 AM – 7:00 PM"

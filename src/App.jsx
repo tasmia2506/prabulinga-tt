@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Layout & Global Helper
@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import SlowmoScrollObserver from './components/SlowmoScrollObserver';
 import SmoothScroll from './components/SmoothScroll';
+import CookieConsent from './components/CookieConsent';
 
 // Modals & Config Drawer
 import BookingModal from './components/Modals/BookingModal';
@@ -28,6 +29,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GeneralBookingPage from './pages/GeneralBookingPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
 
 // Default Business Config
 import { DEFAULT_CONFIG } from './data/config';
@@ -46,6 +48,24 @@ export default function App() {
   const [selectedPackageData, setSelectedPackageData] = useState(null);
 
   const [isConfigDrawerOpen, setIsConfigDrawerOpen] = useState(false);
+
+  // Dark Mode — opt-in only, off by default, persisted per visitor
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    try {
+      return window.localStorage.getItem('prabhuling-dark-mode') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark-mode', isDarkMode);
+    try {
+      window.localStorage.setItem('prabhuling-dark-mode', String(isDarkMode));
+    } catch {
+      // localStorage unavailable — theme just won't persist across visits
+    }
+  }, [isDarkMode]);
 
   // Handlers
   const handleOpenBookingModal = (data = {}) => {
@@ -77,6 +97,8 @@ export default function App() {
         <Header
           config={config}
           onOpenBookingModal={handleOpenBookingModal}
+          isDarkMode={isDarkMode}
+          onToggleDarkMode={() => setIsDarkMode((prev) => !prev)}
         />
 
         {/* Main Route Content */}
@@ -98,6 +120,7 @@ export default function App() {
               path="/buses"
               element={
                 <BusesPage
+                  config={config}
                   onOpenBookingModal={handleOpenBookingModal}
                 />
               }
@@ -202,6 +225,15 @@ export default function App() {
                 />
               }
             />
+
+            <Route
+              path="/terms"
+              element={
+                <TermsPage
+                  config={config}
+                />
+              }
+            />
           </Routes>
         </main>
 
@@ -239,6 +271,8 @@ export default function App() {
           onClose={() => setIsConfigDrawerOpen(false)}
           onUpdateConfig={handleUpdateConfig}
         />
+
+        <CookieConsent />
       </div>
     </Router>
   );

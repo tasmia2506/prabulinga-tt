@@ -14,7 +14,7 @@ const STATS = [
   { num: '03', label: 'DISPATCH', value: '24/7' }
 ];
 
-export default function AboutSection({ onOpenBookingModal }) {
+export default function AboutSection({ onOpenBookingModal, showReadFullStory = true }) {
   return (
     <section
       style={{
@@ -66,7 +66,7 @@ export default function AboutSection({ onOpenBookingModal }) {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.7rem', letterSpacing: '0.06em', color: '#D8CBBA' }}>
+                  <div style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.7rem', letterSpacing: '0.06em', color: 'var(--color-terracotta)' }}>
                     16.5138° N, 75.0672° E · TERDAL
                   </div>
                   <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', fontWeight: '700', marginTop: '0.15rem' }}>
@@ -191,9 +191,11 @@ export default function AboutSection({ onOpenBookingModal }) {
             </div>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link to="/about" className="btn btn-primary">
-                Read Full Story →
-              </Link>
+              {showReadFullStory && (
+                <Link to="/about" className="btn btn-primary">
+                  Read Full Story →
+                </Link>
+              )}
               <button
                 onClick={() => onOpenBookingModal()}
                 className="btn btn-outline"

@@ -1,4 +1,6 @@
 import React from 'react';
+import { MessageSquare, Phone } from 'lucide-react';
+import { buildWhatsAppLink } from '../../utils/whatsapp';
 
 export default function TicketStub({
   ticketType = 'PASSENGER BUS PASS #01',
@@ -13,6 +15,8 @@ export default function TicketStub({
   image,
   onBook,
   onViewDetail,
+  whatsappNumber,
+  phoneNumber,
   style = {}
 }) {
   const visibleFeatures = details.slice(0, 3);
@@ -26,7 +30,7 @@ export default function TicketStub({
         backgroundColor: 'var(--color-paper-sheet)',
         border: '1px solid var(--color-border)',
         borderRadius: '20px',
-        boxShadow: '0 4px 18px -2px rgba(34, 31, 29, 0.06)',
+        boxShadow: '0 4px 18px -2px rgba(0, 0, 0, 0.06)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -36,13 +40,13 @@ export default function TicketStub({
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 16px 32px -6px rgba(34, 31, 29, 0.14)';
+        e.currentTarget.style.boxShadow = '0 16px 32px -6px rgba(0, 0, 0, 0.14)';
         const img = e.currentTarget.querySelector('img');
         if (img) img.style.transform = 'scale(1.06)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 18px -2px rgba(34, 31, 29, 0.06)';
+        e.currentTarget.style.boxShadow = '0 4px 18px -2px rgba(0, 0, 0, 0.06)';
         const img = e.currentTarget.querySelector('img');
         if (img) img.style.transform = 'scale(1)';
       }}
@@ -69,7 +73,7 @@ export default function TicketStub({
                 width: '6px',
                 height: '6px',
                 borderRadius: '50%',
-                backgroundColor: '#10B981',
+                backgroundColor: 'var(--color-terracotta)',
                 display: 'inline-block'
               }}
             />
@@ -143,48 +147,71 @@ export default function TicketStub({
 
       {/* 5. Clean Footer Section */}
       <div style={{ padding: '0 1.25rem 1.25rem 1.25rem' }}>
-        <div style={{ height: '1px', backgroundColor: 'var(--color-border)', opacity: 0.6, marginBottom: '0.85rem' }} />
+        <div style={{ height: '1px', backgroundColor: 'var(--color-border)', opacity: 0.6, marginBottom: '1rem' }} />
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <div>
-            <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.6rem', color: 'var(--color-ink-light)', display: 'block', letterSpacing: '0.08em' }}>
-              FARE / RATE
-            </span>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '700', color: 'var(--color-forest)' }}>
-              {price || 'Contact for rate'}
-            </div>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          {onBook && (
+            <button
+              onClick={onBook}
+              className="btn btn-primary"
+              style={{
+                flex: 1,
+                fontSize: '0.9rem',
+                padding: '0.7rem 1rem',
+                justifyContent: 'center'
+              }}
+            >
+              Book Pass →
+            </button>
+          )}
 
-          <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
-            {onViewDetail && (
-              <button
-                onClick={onViewDetail}
-                className="btn btn-outline btn-sm"
-                style={{
-                  fontSize: '0.825rem',
-                  padding: '0.45rem 0.85rem',
-                  border: '1px solid var(--color-border-strong)',
-                  backgroundColor: 'transparent',
-                  boxShadow: 'none'
-                }}
-              >
-                View Specs
-              </button>
-            )}
+          {phoneNumber && (
+            <a
+              href={`tel:${phoneNumber.replace(/[^0-9+]/g, '')}`}
+              title="Call to Book"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-ink-solid)',
+                color: '#FFFFFF',
+                flexShrink: 0,
+                transition: 'transform 0.2s ease, opacity 0.2s ease'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
+              <Phone size={18} />
+            </a>
+          )}
 
-            {onBook && (
-              <button
-                onClick={onBook}
-                className="btn btn-primary btn-sm"
-                style={{
-                  fontSize: '0.85rem',
-                  padding: '0.45rem 1rem'
-                }}
-              >
-                Book Pass →
-              </button>
-            )}
-          </div>
+          {whatsappNumber && (
+            <a
+              href={buildWhatsAppLink(whatsappNumber, { serviceType: 'Bus', selectedBus: title, from: origin, to: destination })}
+              target="_blank"
+              rel="noreferrer"
+              title="Book via WhatsApp"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-ink-solid)',
+                color: '#FFFFFF',
+                flexShrink: 0,
+                transition: 'transform 0.2s ease, opacity 0.2s ease'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
+              <MessageSquare size={18} />
+            </a>
+          )}
         </div>
       </div>
     </div>

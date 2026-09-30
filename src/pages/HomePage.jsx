@@ -17,7 +17,7 @@ export default function HomePage({ config, onOpenBookingModal, onOpenBusDetailMo
     <div style={{ backgroundColor: 'var(--color-paper-bg)', minHeight: '100vh' }}>
       <Seo
         title="Home"
-        description="Prabhuling Travel Agency operates a fleet of 8 modern buses across Karnataka & South India, plus flight, train ticket bookings, and curated tour packages with 100% personalized human assistance."
+        description="Prabhuling Travel Agency operates a fleet of 3 modern buses across Karnataka & South India, plus flight, train ticket bookings, and curated tour packages with 100% personalized human assistance."
         path="/"
       />
 
@@ -35,6 +35,7 @@ export default function HomePage({ config, onOpenBookingModal, onOpenBusDetailMo
         onOpenBusDetailModal={onOpenBusDetailModal}
         onOpenBookingModal={onOpenBookingModal}
         limit={3}
+        config={config}
       />
 
       {/* 4. About Section */}

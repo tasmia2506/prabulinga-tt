@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, MessageSquare, Compass, Clock, ExternalLink, ArrowUp } from 'lucide-react';
+import { Phone, MapPin, MessageSquare, Clock, ExternalLink, ArrowUp } from 'lucide-react';
 
 const LABEL_STYLE = {
   fontFamily: 'var(--font-typewriter)',
@@ -34,7 +34,7 @@ export default function Footer({ config, onToggleConfigDrawer }) {
   return (
     <footer
       style={{
-        backgroundColor: '#160D08',
+        backgroundColor: '#000000',
         color: '#FFFFFF',
         padding: '4.5rem 0 0 0',
         position: 'relative'
@@ -53,26 +53,24 @@ export default function Footer({ config, onToggleConfigDrawer }) {
           {/* Col 1: Brand */}
           <div>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', textDecoration: 'none', marginBottom: '1.1rem' }}>
-              <div
+              <img
+                src="/logo.jpg"
+                alt="Prabhuling Travel Agency & Online Services"
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '52px',
+                  height: '52px',
                   borderRadius: '50%',
+                  objectFit: 'cover',
                   border: '1.5px solid var(--color-terracotta)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   flexShrink: 0
                 }}
-              >
-                <Compass size={22} style={{ color: 'var(--color-terracotta)' }} />
-              </div>
+              />
               <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: '800', color: '#FFFFFF', lineHeight: '1.15' }}>
-                  PRABHULING
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: '800', color: '#FFFFFF', lineHeight: '1.2' }}>
+                  PRABHULING TRAVEL AGENCY
                 </div>
-                <div style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.7rem', color: 'var(--color-terracotta)', letterSpacing: '0.1em' }}>
-                  TRAVELS & JOURNEYS
+                <div style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.65rem', color: 'var(--color-terracotta)', letterSpacing: '0.1em' }}>
+                  & ONLINE SERVICES
                 </div>
               </div>
             </Link>
@@ -199,9 +197,12 @@ export default function Footer({ config, onToggleConfigDrawer }) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <span>© {new Date().getFullYear()} Prabhuling Travel Agency. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Prabhuling Travel Agency & Online Services. All rights reserved.</span>
             <Link to="/privacy-policy" style={{ color: 'rgba(255, 255, 255, 0.5)', textDecoration: 'underline' }}>
               Privacy Policy
+            </Link>
+            <Link to="/terms" style={{ color: 'rgba(255, 255, 255, 0.5)', textDecoration: 'underline' }}>
+              Terms &amp; Conditions
             </Link>
           </div>
 

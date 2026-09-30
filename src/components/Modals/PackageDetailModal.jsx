@@ -36,15 +36,17 @@ export default function PackageDetailModal({ packageData, isOpen, onClose, onEnq
         {/* Modal Header */}
         <div
           style={{
-            backgroundColor: 'var(--color-forest)',
+            backgroundColor: 'var(--color-ink-solid)',
             color: '#FFFFFF',
             padding: '1.25rem 1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '0.75rem'
           }}
         >
-          <div>
+          <div style={{ minWidth: 0 }}>
             <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-terracotta)', letterSpacing: '0.1em' }}>
               CURATED TOUR DOSSIER • {packageData.duration || '3D / 2N'}
             </span>
@@ -52,15 +54,15 @@ export default function PackageDetailModal({ packageData, isOpen, onClose, onEnq
               {packageData.name || packageData.title}
             </h3>
           </div>
-          <button onClick={onClose} style={{ color: '#FFFFFF', padding: '0.25rem', cursor: 'pointer' }}>
+          <button onClick={onClose} style={{ color: '#FFFFFF', padding: '0.25rem', cursor: 'pointer', flexShrink: 0 }}>
             <X size={22} />
           </button>
         </div>
 
         {/* Modal Body */}
         <div style={{ padding: '1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-            <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
+            <div style={{ minWidth: 0 }}>
               <p style={{ fontFamily: 'var(--font-handwriting)', fontStyle: 'italic', fontSize: '1.25rem', color: 'var(--color-terracotta)', marginBottom: '0.4rem' }}>
                 "{packageData.tagline || packageData.subtitle || 'Custom group itinerary'}"
               </p>

@@ -23,7 +23,7 @@ export default function AboutPage({ config, onOpenBookingModal }) {
         image="/about-hero-map.jpg"
         imageAlt="Prabhuling Travels — Route Map Across Karnataka"
         aspectRatio="1376 / 768"
-        overlayGradient="linear-gradient(135deg, rgba(10, 20, 15, 0.4) 0%, rgba(10, 10, 10, 0.35) 100%)"
+        overlayGradient="linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(10, 10, 10, 0.35) 100%)"
         imageStyle={{ objectPosition: 'center 65%' }}
         contentStyle={{ maxWidth: 'none', margin: 0, padding: `0 1.25rem 0 clamp(2rem, 8vw, 6rem)` }}
         rounded={0}
@@ -81,7 +81,7 @@ export default function AboutPage({ config, onOpenBookingModal }) {
                   <Bus size={20} />
                 </div>
                 <div>
-                  <strong style={{ display: 'block', fontSize: '1.05rem', color: '#FFFFFF', fontWeight: '800', whiteSpace: 'nowrap' }}>7+ Luxury Buses</strong>
+                  <strong style={{ display: 'block', fontSize: '1.05rem', color: '#FFFFFF', fontWeight: '800', whiteSpace: 'nowrap' }}>3 Luxury Buses</strong>
                   <span style={{ display: 'block', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', whiteSpace: 'nowrap' }}>Direct Fleet Operators</span>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function AboutPage({ config, onOpenBookingModal }) {
       </HeroCard>
 
       {/* Story & About Component */}
-      <AboutSection config={config} onOpenBookingModal={onOpenBookingModal} />
+      <AboutSection config={config} onOpenBookingModal={onOpenBookingModal} showReadFullStory={false} />
 
       {/* Why Choose Us Engine */}
       <WhyUs config={config} />

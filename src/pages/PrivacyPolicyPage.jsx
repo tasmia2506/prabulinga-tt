@@ -1,5 +1,6 @@
 import React from 'react';
 import MapFragment from '../components/scrapbook/MapFragment';
+import Seo from '../components/Seo';
 
 const SECTION_HEADING_STYLE = {
   fontFamily: 'var(--font-display)',
@@ -30,6 +31,11 @@ export default function PrivacyPolicyPage({ config }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title="Privacy Policy"
+        description={`How ${businessName} collects, uses, shares & protects your personal data under India's Digital Personal Data Protection Act, 2023.`}
+        path="/privacy-policy"
+      />
       <MapFragment opacity={0.06} />
 
       {/* Header Banner */}

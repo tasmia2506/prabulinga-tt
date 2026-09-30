@@ -4,7 +4,7 @@ export default function StatusBar({ config }) {
   return (
     <div
       style={{
-        backgroundColor: '#2C2D27',
+        backgroundColor: '#000000',
         color: 'rgba(255, 255, 255, 0.8)',
         padding: '0.7rem 0',
         position: 'relative',

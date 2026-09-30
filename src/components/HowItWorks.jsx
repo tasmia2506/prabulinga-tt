@@ -6,7 +6,7 @@ export default function HowItWorks() {
     {
       step: 'STEP 01',
       title: 'Choose Service',
-      desc: 'Select bus ticket from our 7-bus fleet, flight, train booking, or tour package.'
+      desc: 'Select bus ticket from our 3-bus fleet, flight, train booking, or tour package.'
     },
     {
       step: 'STEP 02',
@@ -44,7 +44,7 @@ export default function HowItWorks() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(180deg, rgba(18, 25, 20, 0.75) 0%, rgba(18, 25, 20, 0.85) 100%)',
+          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.85) 100%)',
           zIndex: 1
         }}
       />

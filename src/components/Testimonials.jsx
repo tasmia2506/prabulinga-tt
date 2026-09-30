@@ -22,7 +22,7 @@ export default function Testimonials() {
     { transform: 'translate(6px, 30px) rotate(2deg) scale(0.91)', opacity: 0.6, zIndex: 7, shadow: 'var(--shadow-paper)' },
   ];
 
-  const paperTypes = ['#F1F0E7', '#E3E2D8', '#D2D1C6', '#C1C0B5'];
+  const paperTypes = ['#F1F0E7', '#F5EFD6', '#EDE1B0', '#E0CE8A'];
 
   return (
     <section className="section-padding" style={{ backgroundColor: 'var(--color-paper-bg)', borderTop: '1px solid var(--color-border)', overflow: 'hidden' }}>
@@ -42,6 +42,7 @@ export default function Testimonials() {
 
         {/* Outer Layout: Left Button -- Centered Stack Deck -- Right Button */}
         <div
+          className="testimonials-row"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -54,7 +55,7 @@ export default function Testimonials() {
           <button
             onClick={handlePrev}
             aria-label="Previous review"
-            className="paper-nav-btn"
+            className="paper-nav-btn testimonials-nav-btn"
             style={{ zIndex: 30, flexShrink: 0 }}
           >
             <ChevronLeft size={24} />
@@ -91,6 +92,7 @@ export default function Testimonials() {
                 return (
                   <div
                     key={t.id}
+                    className="testimonial-card"
                     onClick={() => !isTop && setCurrentIndex(idx)}
                     style={{
                       position: 'absolute',
@@ -232,13 +234,27 @@ export default function Testimonials() {
           <button
             onClick={handleNext}
             aria-label="Next review"
-            className="paper-nav-btn"
+            className="paper-nav-btn testimonials-nav-btn"
             style={{ zIndex: 30, flexShrink: 0 }}
           >
             <ChevronRight size={24} />
           </button>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .testimonials-row { gap: 0.5rem !important; }
+          .testimonials-nav-btn { width: 34px !important; height: 34px !important; }
+          .testimonials-nav-btn svg { width: 18px !important; height: 18px !important; }
+        }
+        @media (max-width: 460px) {
+          .testimonials-row { gap: 0.35rem !important; }
+        }
+        @media (max-width: 400px) {
+          .testimonial-card { padding: 1.25rem 1.1rem !important; }
+        }
+      `}</style>
     </section>
   );
 }

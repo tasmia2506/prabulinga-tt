@@ -5,6 +5,7 @@ import TicketCard from '../components/scrapbook/TicketCard';
 import TravelStamp from '../components/scrapbook/TravelStamp';
 import MapFragment from '../components/scrapbook/MapFragment';
 import HeroCard from '../components/HeroCard';
+import Seo from '../components/Seo';
 
 export default function TrainBookingPage({ config, onOpenBookingModal }) {
   const [formData, setFormData] = useState({
@@ -48,12 +49,17 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title="Train Ticket Booking"
+        description="Railway ticket assistance from Prabhuling Travel Agency — Tatkal guidance, berth preference requests, and PNR status support, no technical headaches."
+        path="/train-booking"
+      />
       <MapFragment opacity={0.06} />
 
       {/* Hero Banner with Video Background & Centered Content */}
       <HeroCard
         video="/train2.mp4"
-        overlayGradient="linear-gradient(180deg, rgba(15, 22, 18, 0.45) 0%, rgba(15, 22, 18, 0.25) 50%, rgba(15, 22, 18, 0.60) 100%)"
+        overlayGradient="linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.60) 100%)"
         minHeight="640px"
         pullUnderHeader={false}
         rounded={0}
@@ -120,13 +126,13 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               }}
             >
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
-                <CheckCircle2 size={18} style={{ color: '#4ADE80' }} /> All Zones Covered
+                <CheckCircle2 size={18} style={{ color: 'var(--color-terracotta)' }} /> All Zones Covered
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
-                <Zap size={18} style={{ color: '#FACC15' }} /> Tatkal Assistance
+                <Zap size={18} style={{ color: 'var(--color-terracotta)' }} /> Tatkal Assistance
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
-                <Train size={18} style={{ color: '#38BDF8' }} /> Lower Berth Preference
+                <Train size={18} style={{ color: 'var(--color-terracotta)' }} /> Lower Berth Preference
               </span>
             </div>
           </div>
@@ -262,7 +268,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               <button
                 type="submit"
                 className="btn btn-whatsapp btn-lg"
-                style={{ width: '100%', backgroundColor: '#1E6B4B', color: '#FFFFFF', fontWeight: '700' }}
+                style={{ width: '100%', backgroundColor: 'var(--color-ink-solid)', color: '#FFFFFF', fontWeight: '700' }}
               >
                 <Train size={20} /> SEND TRAIN ENQUIRY VIA WHATSAPP →
               </button>

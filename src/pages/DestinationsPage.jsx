@@ -19,7 +19,7 @@ export default function DestinationsPage({ onOpenBookingModal }) {
         image="/karnataka-map-hero-wide.jpg"
         imageAlt="Illustrated Karnataka Map — Featured Destinations"
         aspectRatio="1584 / 672"
-        overlayGradient="linear-gradient(90deg, rgba(15, 22, 18, 0.75) 0%, rgba(15, 22, 18, 0.5) 40%, rgba(15, 22, 18, 0.1) 75%)"
+        overlayGradient="linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.1) 75%)"
         imageStyle={{ filter: 'contrast(1.06) brightness(1.05)' }}
         rounded={0}
         contentStyle={{ maxWidth: 'none', margin: 0, padding: `0 1.25rem 0 clamp(2rem, 8vw, 6rem)` }}

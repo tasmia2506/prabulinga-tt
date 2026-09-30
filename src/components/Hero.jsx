@@ -8,7 +8,7 @@ export default function Hero() {
     <HeroCard
       video="/landing page.mp4"
       overlay
-      overlayGradient="linear-gradient(180deg, rgba(18, 25, 20, 0.45) 0%, rgba(18, 25, 20, 0.25) 45%, rgba(18, 25, 20, 0.85) 100%)"
+      overlayGradient="linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.25) 45%, rgba(0, 0, 0, 0.85) 100%)"
       minHeight="620px"
       wave={false}
       rounded={0}
@@ -18,7 +18,7 @@ export default function Hero() {
       <div
         style={{
           position: 'absolute',
-          top: '28px',
+          top: '96px',
           right: '5%',
           zIndex: 10,
           color: 'rgba(255, 255, 255, 0.85)',
@@ -36,7 +36,7 @@ export default function Hero() {
         style={{
           position: 'relative',
           zIndex: 10,
-          paddingTop: '3.5rem',
+          paddingTop: 'clamp(6rem, 14vw, 11.5rem)',
           textAlign: 'left',
           color: '#FFFFFF'
         }}
@@ -61,7 +61,7 @@ export default function Hero() {
           }}
         >
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-terracotta)', display: 'inline-block' }} />
-          Every Journey Has A Story
+          Book • Travel • Explore
         </div>
 
         {/* Large Editorial Headline — Mixed Case with Accent Word */}
@@ -78,23 +78,9 @@ export default function Hero() {
             textShadow: '0 4px 20px rgba(0,0,0,0.4)'
           }}
         >
-          Your Next<br />
-          Adventure <span style={{ color: 'var(--color-terracotta)' }}>Awaits.</span>
+          Travel Made Simple.<br />
+          Journeys Made <span style={{ color: 'var(--color-terracotta)' }}>Memorable.</span>
         </h1>
-
-        {/* Italic Accent Tagline */}
-        <p
-          style={{
-            fontFamily: 'var(--font-handwriting)',
-            fontStyle: 'italic',
-            fontSize: 'clamp(1.2rem, 2.2vw, 1.5rem)',
-            color: '#FDFBF7',
-            marginBottom: '1.1rem',
-            textShadow: '0 2px 10px rgba(0,0,0,0.4)'
-          }}
-        >
-          Where comfort meets the freedom to explore.
-        </p>
 
         {/* Short Concise Supporting Statement */}
         <p
@@ -109,17 +95,19 @@ export default function Hero() {
             textShadow: '0 2px 10px rgba(0,0,0,0.5)'
           }}
         >
-          Curated journeys across Karnataka & South India, designed around the way you love to travel.
+          From bus, train &amp; flight bookings to reliable transportation and thoughtfully planned tours &amp; travel packages, we help you plan your journey with ease.
+          <br /><br />
+          Whether you're travelling nearby or exploring somewhere new, Prabhuling Travel Agency &amp; Online Services is here to make every step simple and convenient.
         </p>
 
         {/* Primary CTA & Secondary Action */}
         <div style={{ display: 'flex', gap: '1.1rem', justifyContent: 'flex-start', alignItems: 'center', flexWrap: 'wrap' }}>
           <Link
-            to="/packages"
+            to="/buses"
             className="btn"
             style={{
               backgroundColor: 'var(--color-terracotta)',
-              color: '#2C2D27',
+              color: '#000000',
               padding: '1rem 2.2rem',
               fontSize: '0.95rem',
               fontWeight: '700',
@@ -130,11 +118,11 @@ export default function Hero() {
               textDecoration: 'none'
             }}
           >
-            Start Your Journey <ArrowRight size={18} />
+            Plan Your Journey <ArrowRight size={18} />
           </Link>
 
-          <a
-            href="#destinations-intro"
+          <Link
+            to="/packages"
             style={{
               color: 'rgba(255, 255, 255, 0.92)',
               fontFamily: 'var(--font-sans)',
@@ -153,8 +141,8 @@ export default function Hero() {
               transition: 'all 0.2s ease'
             }}
           >
-            Explore Destinations <ArrowDown size={14} />
-          </a>
+            Explore Tours <ArrowDown size={14} />
+          </Link>
         </div>
       </div>
 

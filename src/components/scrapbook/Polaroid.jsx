@@ -18,7 +18,7 @@ export default function Polaroid({
         backgroundColor: '#FFFFFF',
         padding: '0.75rem 0.75rem 1.25rem 0.75rem',
         borderRadius: '8px',
-        boxShadow: '0 8px 24px -4px rgba(34, 31, 29, 0.08)',
+        boxShadow: '0 8px 24px -4px rgba(0, 0, 0, 0.08)',
         border: '1px solid rgba(195, 180, 160, 0.35)',
         transform: `rotate(${rotation})`,
         transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease',
@@ -27,11 +27,11 @@ export default function Polaroid({
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = `rotate(0deg) translateY(-4px)`;
-        e.currentTarget.style.boxShadow = '0 14px 32px -4px rgba(34, 31, 29, 0.16)';
+        e.currentTarget.style.boxShadow = '0 14px 32px -4px rgba(0, 0, 0, 0.16)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = `rotate(${rotation}) translateY(0)`;
-        e.currentTarget.style.boxShadow = '0 8px 24px -4px rgba(34, 31, 29, 0.08)';
+        e.currentTarget.style.boxShadow = '0 8px 24px -4px rgba(0, 0, 0, 0.08)';
       }}
     >
       {/* Image Container */}
@@ -63,7 +63,7 @@ export default function Polaroid({
               position: 'absolute',
               top: '10px',
               right: '10px',
-              backgroundColor: 'var(--color-forest)',
+              backgroundColor: 'var(--color-ink-solid)',
               color: '#FFFFFF',
               fontFamily: 'var(--font-typewriter)',
               fontSize: '0.675rem',

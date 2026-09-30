@@ -4,6 +4,7 @@ import PaperCard from '../components/scrapbook/PaperCard';
 import MapFragment from '../components/scrapbook/MapFragment';
 import HeroCard from '../components/HeroCard';
 import { Palmtree, Mountain, Bus, MapPin, Clock, ArrowRight } from 'lucide-react';
+import Seo from '../components/Seo';
 
 export default function ToursPage({ onOpenBookingModal }) {
   const [filterDest, setFilterDest] = useState('All');
@@ -17,6 +18,11 @@ export default function ToursPage({ onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title="Tour & Holiday Packages"
+        description="Curated multi-day tour packages across Karnataka & South India — heritage circuits, beaches, and hill stations with bus transfers, stays, and guided sightseeing."
+        path="/packages"
+      />
       <MapFragment opacity={0.06} />
 
       {/* Hero Banner with HD Background Image & Left-Aligned Content */}
@@ -24,7 +30,7 @@ export default function ToursPage({ onOpenBookingModal }) {
         image="/karnataka-map-hero-wide.jpg"
         imageAlt="Illustrated Karnataka Map — Signature Tour Packages"
         aspectRatio="1584 / 672"
-        overlayGradient="linear-gradient(90deg, rgba(15, 22, 18, 0.75) 0%, rgba(15, 22, 18, 0.5) 40%, rgba(15, 22, 18, 0.1) 75%)"
+        overlayGradient="linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.1) 75%)"
         imageStyle={{ filter: 'contrast(1.06) brightness(1.05)' }}
         contentStyle={{ maxWidth: 'none', margin: 0, padding: `0 1.25rem 0 clamp(2rem, 8vw, 6rem)` }}
         rounded={0}
@@ -214,7 +220,7 @@ export default function ToursPage({ onOpenBookingModal }) {
                         alignItems: 'center',
                         gap: '0.4rem',
                         backgroundColor: 'var(--color-terracotta)',
-                        color: '#2C2D27',
+                        color: '#000000',
                         fontFamily: 'var(--font-sans)',
                         fontSize: '0.825rem',
                         fontWeight: '700',

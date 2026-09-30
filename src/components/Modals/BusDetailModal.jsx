@@ -36,15 +36,17 @@ export default function BusDetailModal({ bus, isOpen, onClose, onBookBus }) {
         {/* Modal Header */}
         <div
           style={{
-            backgroundColor: 'var(--color-forest)',
+            backgroundColor: 'var(--color-ink-solid)',
             color: '#FFFFFF',
             padding: '1.25rem 1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '0.75rem'
           }}
         >
-          <div>
+          <div style={{ minWidth: 0 }}>
             <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-terracotta)', letterSpacing: '0.1em' }}>
               OFFICIAL BUS FLEET SPECIFICATION
             </span>
@@ -52,24 +54,24 @@ export default function BusDetailModal({ bus, isOpen, onClose, onBookBus }) {
               {bus.name} ({bus.type})
             </h3>
           </div>
-          <button onClick={onClose} style={{ color: '#FFFFFF', padding: '0.25rem', cursor: 'pointer' }}>
+          <button onClick={onClose} style={{ color: '#FFFFFF', padding: '0.25rem', cursor: 'pointer', flexShrink: 0 }}>
             <X size={22} />
           </button>
         </div>
 
         {/* Modal Body */}
         <div style={{ padding: '1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-            <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
+            <div style={{ minWidth: 0 }}>
               <p style={{ fontFamily: 'var(--font-handwriting)', fontStyle: 'italic', fontSize: '1.25rem', color: 'var(--color-terracotta)', marginBottom: '0.4rem' }}>
                 "{bus.tagline || 'Directly owned & maintained coach'}"
               </p>
               <div style={{ fontSize: '0.9rem', color: 'var(--color-ink-muted)' }}>
-                Capacity: {bus.capacity} Seats • {bus.type}
+                {bus.specLine || `Capacity: ${bus.capacity} Seats • ${bus.type}`}
               </div>
             </div>
 
-            <TravelStamp text="8-BUS FLEET" size="small" color="var(--color-gold-stamp)" rotation="-6deg" />
+            <TravelStamp text="3-BUS FLEET" size="small" color="var(--color-gold-stamp)" rotation="-6deg" />
           </div>
 
           <div style={{ backgroundColor: 'var(--color-paper-cream)', padding: '1rem', borderRadius: '4px', border: '1px solid var(--color-border)', marginBottom: '1.25rem' }}>

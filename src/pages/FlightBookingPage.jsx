@@ -5,6 +5,7 @@ import TicketCard from '../components/scrapbook/TicketCard';
 import TravelStamp from '../components/scrapbook/TravelStamp';
 import MapFragment from '../components/scrapbook/MapFragment';
 import HeroCard from '../components/HeroCard';
+import Seo from '../components/Seo';
 
 export default function FlightBookingPage({ config, onOpenBookingModal }) {
   const [formData, setFormData] = useState({
@@ -48,12 +49,17 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title="Flight Ticket Booking"
+        description="Get expert flight ticket booking assistance from Prabhuling Travel Agency — domestic & international fares, seat selection, and human support, no booking fee."
+        path="/flight-booking"
+      />
       <MapFragment opacity={0.06} />
 
       {/* Hero Banner with Video Background & Centered Content */}
       <HeroCard
         video="/flight.mp4"
-        overlayGradient="linear-gradient(180deg, rgba(10, 21, 32, 0.45) 0%, rgba(10, 21, 32, 0.25) 50%, rgba(10, 21, 32, 0.60) 100%)"
+        overlayGradient="linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.60) 100%)"
         minHeight="640px"
         pullUnderHeader={false}
         rounded={0}
@@ -120,13 +126,13 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
               }}
             >
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
-                <Plane size={18} style={{ color: '#38BDF8' }} /> All Routes Covered
+                <Plane size={18} style={{ color: 'var(--color-terracotta)' }} /> All Routes Covered
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
-                <Tag size={18} style={{ color: '#FACC15' }} /> Fare Comparison
+                <Tag size={18} style={{ color: 'var(--color-terracotta)' }} /> Fare Comparison
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
-                <Briefcase size={18} style={{ color: '#4ADE80' }} /> Baggage & Seat Help
+                <Briefcase size={18} style={{ color: 'var(--color-terracotta)' }} /> Baggage & Seat Help
               </span>
             </div>
           </div>
@@ -251,7 +257,7 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
               <button
                 type="submit"
                 className="btn btn-whatsapp btn-lg"
-                style={{ width: '100%', backgroundColor: '#1E6B4B', color: '#FFFFFF', fontWeight: '700' }}
+                style={{ width: '100%', backgroundColor: 'var(--color-ink-solid)', color: '#FFFFFF', fontWeight: '700' }}
               >
                 <Plane size={20} /> SEND FLIGHT ENQUIRY VIA WHATSAPP →
               </button>

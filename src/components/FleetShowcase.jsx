@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FLEET } from '../data/fleetData';
 import TicketStub from './scrapbook/TicketStub';
 
-export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal, limit }) {
+export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal, limit, config }) {
   const displayedFleet = limit ? FLEET.slice(0, limit) : FLEET;
 
   return (
@@ -15,7 +15,7 @@ export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal
             <span>OFFICIAL TRANSPORTATION</span>
           </div>
           <h2 className="section-title">
-            OUR 8-BUS LUXURY FLEET
+            OUR 3-BUS LUXURY FLEET
           </h2>
           <p className="section-desc">
             Directly operated by Prabhuling Travel Agency. Verified luxury Sleeper & Seater coaches with pushback seats, air conditioning, charging ports, & experienced drivers.
@@ -64,8 +64,8 @@ export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal
               ticketType={`PASSENGER BUS PASS #${idx + 1}`}
               title={bus.name}
               subtitle={bus.specLine || `${bus.type} (${bus.capacity} Seats)`}
-              origin={['bus-1', 'bus-8'].includes(bus.id) ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[0].trim() : 'Bengaluru')}
-              destination={['bus-1', 'bus-8'].includes(bus.id) ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[1]?.split('(')[0].trim() : 'South India')}
+              origin={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[0].trim() : 'Bengaluru')}
+              destination={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[1]?.split('(')[0].trim() : 'South India')}
               price={bus.startingPrice ? `₹${bus.startingPrice}/seat` : 'Contact for rate'}
               details={bus.amenities || bus.features || ['AC Sleeper', 'Pushback Seats', 'Charging Ports', 'GPS Tracking']}
               stampText="OPERATED FLEET"
@@ -73,6 +73,8 @@ export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal
               image={bus.image}
               onViewDetail={() => onOpenBusDetailModal(bus)}
               onBook={() => onOpenBookingModal({ service: 'Bus Rental', busId: bus.id, busName: bus.name })}
+              phoneNumber={config?.phoneNumber}
+              whatsappNumber={config?.whatsappNumber}
             />
           ))}
         </div>

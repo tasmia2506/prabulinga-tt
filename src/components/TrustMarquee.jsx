@@ -2,7 +2,7 @@ import React from 'react';
 import { Bus, ShieldCheck, Users, Clock, BadgeCheck, MapPin, MessageCircle, Star } from 'lucide-react';
 
 const TRUST_ITEMS = [
-  { icon: Bus, label: '8+ LUXURY BUSES', desc: 'Modern, well-maintained fleet' },
+  { icon: Bus, label: '3 LUXURY BUSES', desc: 'Modern, well-maintained fleet' },
   { icon: BadgeCheck, label: 'TRANSPARENT PRICING', desc: 'Zero hidden fees & honest billing' },
   { icon: Clock, label: '24/7 HUMAN SUPPORT', desc: 'Instant booking via call & WhatsApp' },
   { icon: ShieldCheck, label: '10+ YEARS OF TRUST', desc: 'Verified drivers, safe journeys' },
@@ -31,7 +31,7 @@ export default function TrustMarquee() {
     <section
       style={{
         backgroundColor: 'var(--color-terracotta)',
-        borderBottom: '1px solid rgba(44, 45, 39, 0.12)',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
         overflow: 'hidden',
         position: 'relative',
         marginTop: '0.85rem'
@@ -78,13 +78,13 @@ export default function TrustMarquee() {
         .trust-marquee-desc {
           font-size: 0.8rem;
           font-weight: 400;
-          color: rgba(44, 45, 39, 0.65);
+          color: rgba(0, 0, 0, 0.65);
         }
         .trust-marquee-dot {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background-color: rgba(44, 45, 39, 0.3);
+          background-color: rgba(0, 0, 0, 0.3);
           margin-left: 1.75rem;
         }
         .trust-marquee-fade {

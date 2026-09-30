@@ -4,6 +4,7 @@ import { PACKAGES } from '../data/packagesData';
 import PaperCard from '../components/scrapbook/PaperCard';
 import TravelStamp from '../components/scrapbook/TravelStamp';
 import MapFragment from '../components/scrapbook/MapFragment';
+import Seo from '../components/Seo';
 
 export default function TourDetailPage({ config, onOpenBookingModal }) {
   const { id } = useParams();
@@ -11,6 +12,11 @@ export default function TourDetailPage({ config, onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title={pkg.title}
+        description={`${pkg.title} — ${pkg.duration} tour package covering ${pkg.destination}, starting at ₹${pkg.startingPrice}/person. Book with Prabhuling Travel Agency.`}
+        path={`/packages/${pkg.id}`}
+      />
       <MapFragment opacity={0.06} />
 
       {/* Header Banner */}

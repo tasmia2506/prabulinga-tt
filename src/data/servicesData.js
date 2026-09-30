@@ -3,10 +3,10 @@ export const SERVICES_LIST = [
   {
     id: "service-bus",
     iconName: "Bus",
-    image: "/service-bus-rental.jpg",
+    image: "/bus-royal-sleeper.jpg",
     title: "Bus Ticket Booking",
-    tagline: "7+ Owned Fleet & Interstate Routes",
-    description: "Book tickets across our own 7 luxury AC/Non-AC sleeper & seater buses with direct seat confirmation, live bus tracking, & zero hidden charges.",
+    tagline: "3 Owned Fleet & Interstate Routes",
+    description: "Book tickets across our own 3 luxury AC/Non-AC sleeper & seater buses with direct seat confirmation, live bus tracking, & zero hidden charges.",
     features: ["Instant Seat Choice", "Clean Bedding & AC", "GPS Bus Tracking", "Human Helpline"],
     badge: "Core Service",
     accentColor: "#FF6F61"

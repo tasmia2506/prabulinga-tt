@@ -247,7 +247,7 @@ export default function Destinations({ onOpenBookingModal }) {
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: '#FFFFFF', margin: 0 }}>
                 {selectedGallery.name}
               </h3>
-              <span style={{ fontSize: '0.8rem', color: '#A0B0A5' }}>
+              <span style={{ fontSize: '0.8rem', color: 'var(--color-terracotta)' }}>
                 Photo {selectedGallery.activeIdx + 1} of {selectedGallery.photos.length}
               </span>
             </div>
@@ -373,7 +373,7 @@ export default function Destinations({ onOpenBookingModal }) {
                   objectFit: 'cover',
                   borderRadius: '4px',
                   cursor: 'pointer',
-                  border: selectedGallery.activeIdx === idx ? '2px solid #E29578' : '2px solid transparent',
+                  border: selectedGallery.activeIdx === idx ? '2px solid var(--color-terracotta)' : '2px solid transparent',
                   opacity: selectedGallery.activeIdx === idx ? 1 : 0.6,
                   transition: 'all 0.2s ease'
                 }}

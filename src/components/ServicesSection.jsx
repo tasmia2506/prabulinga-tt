@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { SERVICES } from '../data/servicesData';
 import { Bus, Plane, Train, Compass, Car, Headphones, ArrowRight, ShieldCheck, Layers } from 'lucide-react';
 
-const BAND_COLORS = ['#2C2D27', '#3A3B33', '#2C2D27', '#3A3B33', '#2C2D27', '#3A3B33'];
+const BAND_COLORS = ['#000000', '#1A1A1A', '#000000', '#1A1A1A', '#000000', '#1A1A1A'];
 
 export default function ServicesSection({ onOpenBookingModal, limit }) {
   const displayedServices = limit ? SERVICES.slice(0, limit) : SERVICES;

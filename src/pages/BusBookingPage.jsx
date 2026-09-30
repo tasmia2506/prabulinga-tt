@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FLEET_BUSES } from '../data/fleetData';
 import { Bus, Calendar, MapPin, Users, Search, ShieldCheck, CheckCircle2, Phone, MessageSquare, Star, ArrowRight, Filter } from 'lucide-react';
+import Seo from '../components/Seo';
 
 export default function BusBookingPage({ config, onOpenBookingModal }) {
   const [fromCity, setFromCity] = useState('Bengaluru');
@@ -29,6 +30,11 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-bg-main)', paddingBottom: '4.5rem' }}>
+      <Seo
+        title="Bus Ticket Booking"
+        description="Search and book bus tickets on Prabhuling Travel Agency's own fleet. AC/Non-AC sleeper & seater coaches, live seat selection, and confirmed reservations."
+        path="/bus-booking"
+      />
       {/* Page Banner */}
       <section style={{ backgroundColor: 'var(--color-primary-dark)', color: '#FFFFFF', padding: '3.5rem 0 3rem 0', position: 'relative' }}>
         <div className="container">
@@ -36,11 +42,11 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
             <div className="section-tag" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
               <Bus size={14} /> Direct Bus Reservation Engine
             </div>
-            <h1 className="font-heading" style={{ color: '#FFFFFF', fontSize: '3.25rem', marginBottom: '0.75rem' }}>
+            <h1 className="font-heading" style={{ color: '#FFFFFF', fontSize: 'clamp(2.2rem, 6vw, 3.25rem)', marginBottom: '0.75rem' }}>
               Bus Ticket Booking
             </h1>
-            <p className="font-body" style={{ color: '#EAF5F0', fontSize: '1.1rem', lineHeight: '1.6' }}>
-              Book confirmed tickets across our own <strong>7 luxury AC sleeper & seater buses</strong>. Guaranteed seats, live GPS tracking, clean bedding, & zero hidden service fees.
+            <p className="font-body" style={{ color: '#FDFCF3', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              Book confirmed tickets across our own <strong>3 luxury AC sleeper & seater buses</strong>. Guaranteed seats, live GPS tracking, clean bedding, & zero hidden service fees.
             </p>
           </div>
         </div>
@@ -121,7 +127,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
           </div>
 
           {/* Filter Pills */}
-          <div style={{ display: 'flex', gap: '0.5rem', backgroundColor: '#FFFFFF', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', backgroundColor: '#FFFFFF', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', flexWrap: 'wrap' }}>
             {['All', 'Sleeper', 'Seater', 'AC'].map(type => (
               <button
                 key={type}
@@ -132,7 +138,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
                   fontSize: '0.825rem',
                   fontWeight: '700',
                   border: 'none',
-                  backgroundColor: busTypeFilter === type ? 'var(--color-primary)' : 'transparent',
+                  backgroundColor: busTypeFilter === type ? 'var(--color-ink-solid)' : 'transparent',
                   color: busTypeFilter === type ? '#FFFFFF' : 'var(--color-text-muted)'
                 }}
               >
@@ -150,7 +156,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
                 
                 {/* Left Info Column */}
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
                     <span className="badge badge-navy">{bus.busNumber}</span>
                     <span className="badge badge-accent">{bus.type}</span>
                     <span style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
@@ -192,7 +198,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
                     ₹{bus.startingPrice}
                   </div>
 
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     <button
                       className="btn btn-outline btn-sm"
                       onClick={() => setSelectedSeatBus(selectedSeatBus === bus.id ? null : bus.id)}
@@ -214,11 +220,11 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
               {/* Interactive Seat Layout Preview Drawer */}
               {selectedSeatBus === bus.id && (
                 <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--color-border)', backgroundColor: '#FAF7F2', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
                     <div style={{ fontWeight: '700', color: 'var(--color-primary)', fontSize: '0.95rem' }}>
                       Interactive Seat Availability Diagram ({bus.seatLayout.type})
                     </div>
-                    <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem' }}>
+                    <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', flexWrap: 'wrap' }}>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', border: '1px solid var(--color-border-strong)', backgroundColor: '#FFFFFF' }}></span> Available</span>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'var(--color-accent)' }}></span> Selected</span>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'var(--color-border-strong)' }}></span> Booked</span>
@@ -242,7 +248,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
                             fontWeight: '700',
                             border: isSelected ? 'none' : '1px solid var(--color-border-strong)',
                             backgroundColor: isBooked ? '#D4BE98' : isSelected ? 'var(--color-accent)' : '#FFFFFF',
-                            color: isSelected ? '#FFFFFF' : isBooked ? '#8DA39A' : 'var(--color-primary)',
+                            color: isSelected ? '#FFFFFF' : isBooked ? 'var(--color-ink-light)' : 'var(--color-primary)',
                             cursor: isBooked ? 'not-allowed' : 'pointer'
                           }}
                         >

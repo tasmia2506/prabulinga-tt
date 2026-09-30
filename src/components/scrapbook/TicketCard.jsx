@@ -165,42 +165,42 @@ export default function TicketCard({
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem', margin: '0.5rem 0' }}>
             <div className="barcode-wrapper">
               <svg width="150" height="48" viewBox="0 0 150 48" fill="none" style={{ maxWidth: '100%', height: 'auto' }}>
-                <rect x="0" y="0" width="3" height="48" fill="#242930"/>
-                <rect x="5" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="8" y="0" width="4" height="48" fill="#242930"/>
-                <rect x="14" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="18" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="21" y="0" width="5" height="48" fill="#242930"/>
-                <rect x="28" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="32" y="0" width="3" height="48" fill="#242930"/>
-                <rect x="37" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="40" y="0" width="4" height="48" fill="#242930"/>
-                <rect x="46" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="50" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="53" y="0" width="5" height="48" fill="#242930"/>
-                <rect x="60" y="0" width="3" height="48" fill="#242930"/>
-                <rect x="65" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="69" y="0" width="4" height="48" fill="#242930"/>
-                <rect x="75" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="78" y="0" width="3" height="48" fill="#242930"/>
-                <rect x="83" y="0" width="5" height="48" fill="#242930"/>
-                <rect x="90" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="94" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="97" y="0" width="4" height="48" fill="#242930"/>
-                <rect x="103" y="0" width="3" height="48" fill="#242930"/>
-                <rect x="108" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="111" y="0" width="5" height="48" fill="#242930"/>
-                <rect x="118" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="122" y="0" width="4" height="48" fill="#242930"/>
-                <rect x="128" y="0" width="1" height="48" fill="#242930"/>
-                <rect x="131" y="0" width="3" height="48" fill="#242930"/>
-                <rect x="136" y="0" width="4" height="48" fill="#242930"/>
-                <rect x="142" y="0" width="2" height="48" fill="#242930"/>
-                <rect x="146" y="0" width="3" height="48" fill="#242930"/>
+                <rect x="0" y="0" width="3" height="48" fill="#000000"/>
+                <rect x="5" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="8" y="0" width="4" height="48" fill="#000000"/>
+                <rect x="14" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="18" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="21" y="0" width="5" height="48" fill="#000000"/>
+                <rect x="28" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="32" y="0" width="3" height="48" fill="#000000"/>
+                <rect x="37" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="40" y="0" width="4" height="48" fill="#000000"/>
+                <rect x="46" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="50" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="53" y="0" width="5" height="48" fill="#000000"/>
+                <rect x="60" y="0" width="3" height="48" fill="#000000"/>
+                <rect x="65" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="69" y="0" width="4" height="48" fill="#000000"/>
+                <rect x="75" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="78" y="0" width="3" height="48" fill="#000000"/>
+                <rect x="83" y="0" width="5" height="48" fill="#000000"/>
+                <rect x="90" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="94" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="97" y="0" width="4" height="48" fill="#000000"/>
+                <rect x="103" y="0" width="3" height="48" fill="#000000"/>
+                <rect x="108" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="111" y="0" width="5" height="48" fill="#000000"/>
+                <rect x="118" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="122" y="0" width="4" height="48" fill="#000000"/>
+                <rect x="128" y="0" width="1" height="48" fill="#000000"/>
+                <rect x="131" y="0" width="3" height="48" fill="#000000"/>
+                <rect x="136" y="0" width="4" height="48" fill="#000000"/>
+                <rect x="142" y="0" width="2" height="48" fill="#000000"/>
+                <rect x="146" y="0" width="3" height="48" fill="#000000"/>
               </svg>
             </div>
             {/* Barcode Serial Number */}
-            <span style={{ fontFamily: 'monospace', fontSize: '0.725rem', letterSpacing: '0.14em', color: '#242930', fontWeight: 'bold' }}>
+            <span style={{ fontFamily: 'monospace', fontSize: '0.725rem', letterSpacing: '0.14em', color: '#000000', fontWeight: 'bold' }}>
               {barcodeNumber}
             </span>
           </div>

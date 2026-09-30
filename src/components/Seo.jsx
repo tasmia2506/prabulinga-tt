@@ -12,8 +12,8 @@ export default function Seo({
   noindex = false
 }) {
   const fullTitle = title
-    ? `${title} | Prabhuling Travel Agency`
-    : 'Prabhuling Travel Agency | Bus, Flight, Train Bookings & Tour Packages';
+    ? `${title} | Prabhuling Travel Agency & Online Services`
+    : 'Prabhuling Travel Agency & Online Services | Bus, Flight, Train Bookings & Tour Packages';
 
   const canonical = `${SITE_URL}${path}`;
 

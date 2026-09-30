@@ -36,7 +36,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
             backgroundColor: '#FDFBF7',
             borderRadius: '12px',
             border: '1px solid rgba(195, 180, 160, 0.45)',
-            boxShadow: '0 12px 32px -4px rgba(34, 31, 29, 0.14)',
+            boxShadow: '0 12px 32px -4px rgba(0, 0, 0, 0.14)',
             overflow: 'hidden'
           }}
         >
