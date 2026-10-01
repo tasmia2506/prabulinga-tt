@@ -36,7 +36,7 @@ export default function Hero() {
         style={{
           position: 'relative',
           zIndex: 10,
-          paddingTop: 'clamp(6rem, 14vw, 11.5rem)',
+          paddingTop: 'clamp(4rem, 10vw, 11.5rem)',
           textAlign: 'left',
           color: '#FFFFFF'
         }}

@@ -12,6 +12,7 @@ const CHECKLIST = [
 export default function CtaSection({ onOpenBookingModal }) {
   return (
     <section
+      className="cta-section"
       style={{
         backgroundColor: 'var(--color-ink-solid)',
         padding: '5.5rem 0',
@@ -160,6 +161,12 @@ export default function CtaSection({ onOpenBookingModal }) {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .cta-section { padding: 3.5rem 0 !important; }
+        }
+      `}</style>
     </section>
   );
 }

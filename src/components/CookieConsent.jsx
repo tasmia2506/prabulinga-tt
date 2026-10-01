@@ -3,13 +3,28 @@ import { Link } from 'react-router-dom';
 import { Cookie } from 'lucide-react';
 
 const STORAGE_KEY = 'prabhuling-cookie-consent';
+const ANALYTICS_COOKIES = ['_ga', '_gid', '_gat', 'prabhuling-analytics-id'];
+
+function setCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+}
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function deleteCookie(name) {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
 
 export default function CookieConsent({ onOpenBookingModal }) {
   const [choice, setChoice] = useState(null);
 
   useEffect(() => {
     try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
+      const stored = getCookie(STORAGE_KEY) || window.localStorage.getItem(STORAGE_KEY);
       setChoice(stored || 'pending');
     } catch {
       setChoice('pending');
@@ -18,10 +33,18 @@ export default function CookieConsent({ onOpenBookingModal }) {
 
   const setConsent = (value) => {
     try {
+      setCookie(STORAGE_KEY, value, 365);
       window.localStorage.setItem(STORAGE_KEY, value);
     } catch {
-      // localStorage unavailable (private mode, etc.) — banner will just not persist
+      // cookies/localStorage unavailable (private mode, etc.) — banner will just not persist
     }
+
+    if (value === 'accepted') {
+      setCookie('prabhuling-analytics-id', crypto.randomUUID?.() || String(Date.now()), 365);
+    } else {
+      ANALYTICS_COOKIES.forEach(deleteCookie);
+    }
+
     setChoice(value);
     if (onOpenBookingModal) onOpenBookingModal();
   };

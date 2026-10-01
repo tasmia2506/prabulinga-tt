@@ -132,7 +132,7 @@ export default function Testimonials() {
                       <p
                         style={{
                           fontFamily: 'var(--font-handwriting)', fontStyle: 'italic',
-                          fontSize: '1.45rem',
+                          fontSize: 'clamp(1.05rem, 4.5vw, 1.45rem)',
                           color: 'var(--color-ink)',
                           lineHeight: '1.4',
                           marginBottom: '1.5rem',

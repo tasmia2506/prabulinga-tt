@@ -214,6 +214,7 @@ export default function HeroCard({
           @media (max-width: 760px) {
             .hero-card {
               aspect-ratio: auto !important;
+              height: auto !important;
               min-height: 0 !important;
               align-items: flex-start !important;
               padding-top: 96px !important;

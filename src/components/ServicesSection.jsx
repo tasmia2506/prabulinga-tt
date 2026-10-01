@@ -188,13 +188,14 @@ export default function ServicesSection({ onOpenBookingModal, limit }) {
                 )}
 
                 {/* Footer: Divider + Meta Row */}
-                <div style={{ borderTop: '1px dashed rgba(255,255,255,0.3)', paddingTop: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="service-card-footer" style={{ borderTop: '1px dashed rgba(255,255,255,0.3)', paddingTop: '0.85rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: 'rgba(255,255,255,0.75)' }}>
                     <ShieldCheck size={14} /> Desk Verified
                   </span>
 
                   <button
                     onClick={() => onOpenBookingModal({ service: srv.title })}
+                    className="service-book-btn"
                     style={{
                       fontSize: '0.85rem',
                       fontWeight: '700',
@@ -215,6 +216,12 @@ export default function ServicesSection({ onOpenBookingModal, limit }) {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .service-book-btn { padding: 0.65rem 0; min-height: 44px; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -17,6 +17,7 @@ const STATS = [
 export default function AboutSection({ onOpenBookingModal, showReadFullStory = true }) {
   return (
     <section
+      className="about-section"
       style={{
         position: 'relative',
         backgroundColor: 'var(--color-paper-bg)',
@@ -40,6 +41,7 @@ export default function AboutSection({ onOpenBookingModal, showReadFullStory = t
               <img
                 src="/terdal-gate.jpg"
                 alt="Shirol Agasi Gateway, Terdal"
+                className="about-photo"
                 style={{
                   width: '100%',
                   height: '560px',
@@ -60,9 +62,10 @@ export default function AboutSection({ onOpenBookingModal, showReadFullStory = t
                   color: '#FDFBF7',
                   padding: '0.9rem 1.25rem',
                   display: 'flex',
+                  flexWrap: 'wrap',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  gap: '1rem'
+                  gap: '0.5rem 1rem'
                 }}
               >
                 <div>
@@ -183,7 +186,7 @@ export default function AboutSection({ onOpenBookingModal, showReadFullStory = t
                   <div style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.7rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>
                     {stat.num} / {stat.label}
                   </div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: '800', color: 'var(--color-ink)' }}>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.15rem, 4.5vw, 1.6rem)', fontWeight: '800', color: 'var(--color-ink)' }}>
                     {stat.value}
                   </div>
                 </div>
@@ -213,6 +216,10 @@ export default function AboutSection({ onOpenBookingModal, showReadFullStory = t
           .about-intro { grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
           .about-left { grid-column: span 6 / span 6 !important; }
           .about-right { grid-column: span 6 / span 6 !important; }
+        }
+        @media (max-width: 768px) {
+          .about-section { padding: 3.25rem 0 !important; }
+          .about-photo { height: 320px !important; }
         }
       `}</style>
     </section>
