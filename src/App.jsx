@@ -272,7 +272,7 @@ export default function App() {
           onUpdateConfig={handleUpdateConfig}
         />
 
-        <CookieConsent />
+        <CookieConsent onOpenBookingModal={handleOpenBookingModal} />
       </div>
     </Router>
   );

@@ -4,7 +4,7 @@ import { Cookie } from 'lucide-react';
 
 const STORAGE_KEY = 'prabhuling-cookie-consent';
 
-export default function CookieConsent() {
+export default function CookieConsent({ onOpenBookingModal }) {
   const [choice, setChoice] = useState(null);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export default function CookieConsent() {
       // localStorage unavailable (private mode, etc.) — banner will just not persist
     }
     setChoice(value);
+    if (onOpenBookingModal) onOpenBookingModal();
   };
 
   if (choice === null || choice !== 'pending') return null;
