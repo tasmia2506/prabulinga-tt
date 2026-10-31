@@ -35,6 +35,7 @@ export default function TicketStub({
         flexDirection: 'column',
         justifyContent: 'space-between',
         overflow: 'hidden',
+        height: '100%',
         transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease',
         ...style
       }}
@@ -53,11 +54,11 @@ export default function TicketStub({
     >
       <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
         {/* 1. Top Bus Picture Card (Photo Placeholder Container) */}
-        <div style={{ position: 'relative', height: '230px', width: '100%', overflow: 'hidden', backgroundColor: 'var(--color-paper-cream)' }}>
+        <div style={{ position: 'relative', height: '300px', width: '100%', overflow: 'hidden', backgroundColor: 'var(--color-paper-cream)', flexShrink: 0 }}>
           <img
             src={image || defaultPlaceholder}
             alt={title || "Luxury Bus Coach"}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 70%', display: 'block', transition: 'transform 0.4s ease' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 62%', display: 'block', transition: 'transform 0.4s ease' }}
             loading="lazy"
           />
 

@@ -39,11 +39,13 @@ export function buildWhatsAppLink(whatsappNumber, data) {
     text += `👥 *GUESTS*: ${data.passengers || '2'}\n`;
   } else if (data.serviceType === "BusRental") {
     text += `🚐 *SERVICE*: Bus / Vehicle Rental Enquiry\n`;
-    if (data.selectedBus) text += `🚌 *BUS MODEL*: ${data.selectedBus}\n`;
+    if (data.selectedBus) text += `🚌 *VEHICLE*: ${data.selectedBus}\n`;
     text += `📍 *PICKUP*: ${data.from || 'Not specified'}\n`;
     text += `📍 *DESTINATION*: ${data.to || 'Not specified'}\n`;
     text += `📅 *TRIP DATES*: ${data.date || 'Flexible'}\n`;
     text += `👥 *GROUP SIZE*: ${data.passengers || 'Not specified'}\n`;
+    if (data.minKmPerDay) text += `🛣️ *MIN KM/DAY*: ${data.minKmPerDay} km\n`;
+    if (data.battaPerDay) text += `💰 *DRIVER BATTA*: ₹${data.battaPerDay}/day\n`;
   } else {
     text += `ℹ️ *SERVICE*: General Travel Assistance\n`;
   }

@@ -54,8 +54,9 @@ export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))',
-            gap: '2.25rem 2.5rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            alignItems: 'stretch',
+            gap: '2.5rem'
           }}
         >
           {displayedFleet.map((bus, idx) => (

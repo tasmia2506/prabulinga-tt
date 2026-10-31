@@ -30,6 +30,7 @@ export default function Header({ config, onOpenBookingModal, isDarkMode, onToggl
     { label: 'Packages', path: '/packages' },
     { label: 'Destinations', path: '/destinations' },
     { label: 'Our Buses', path: '/buses' },
+    { label: 'Car & Tempo Rental', path: '/vehicle-rental' },
     { label: 'Services', path: '/services' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -188,7 +189,7 @@ export default function Header({ config, onOpenBookingModal, isDarkMode, onToggl
           style={{
             backgroundColor: blended ? 'var(--color-ink)' : 'var(--color-paper-sheet)',
             borderTop: blended ? '1px solid rgba(255,255,255,0.1)' : '1px solid var(--color-border)',
-            padding: '1.25rem 1.5rem',
+            padding: '1.25rem',
             boxShadow: 'var(--shadow-stacked)',
             position: 'relative'
           }}

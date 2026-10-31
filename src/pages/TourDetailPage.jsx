@@ -14,7 +14,7 @@ export default function TourDetailPage({ config, onOpenBookingModal }) {
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
       <Seo
         title={pkg.title}
-        description={`${pkg.title} — ${pkg.duration} tour package covering ${pkg.destination}, starting at ₹${pkg.startingPrice}/person. Book with Prabhuling Travel Agency.`}
+        description={`${pkg.title} — ${pkg.duration} tour package covering ${pkg.destination}. Get a custom group quote from Prabhuling Travel Agency.`}
         path={`/packages/${pkg.id}`}
       />
       <MapFragment opacity={0.06} />

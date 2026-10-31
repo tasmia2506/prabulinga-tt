@@ -204,14 +204,9 @@ export default function ToursPage({ onOpenBookingModal }) {
                   </p>
 
                   <div style={{ paddingTop: '1rem', marginTop: '1.1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
-                    <div>
-                      <span style={{ display: 'block', fontFamily: 'var(--font-sans)', fontSize: '0.7rem', color: 'var(--color-ink-light)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                        Starting from
-                      </span>
-                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '800', color: 'var(--color-ink)' }}>
-                        ₹{pkg.startingPrice ? pkg.startingPrice.toLocaleString() : '4,999'}
-                      </span>
-                    </div>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8rem', color: 'var(--color-ink-muted)' }}>
+                      Custom quote based on group size
+                    </span>
 
                     <button
                       onClick={() => onOpenBookingModal({ service: 'Tour Package', tourName: pkg.title })}

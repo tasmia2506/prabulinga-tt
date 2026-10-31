@@ -18,6 +18,7 @@ import ConfigDrawer from './components/ConfigDrawer';
 // Dedicated Page Components
 import HomePage from './pages/HomePage';
 import BusesPage from './pages/BusesPage';
+import VehicleRentalPage from './pages/VehicleRentalPage';
 import BusDetailPage from './pages/BusDetailPage';
 import FlightBookingPage from './pages/FlightBookingPage';
 import TrainBookingPage from './pages/TrainBookingPage';
@@ -130,6 +131,16 @@ export default function App() {
               path="/buses/:id"
               element={
                 <BusDetailPage
+                  config={config}
+                  onOpenBookingModal={handleOpenBookingModal}
+                />
+              }
+            />
+
+            <Route
+              path="/vehicle-rental"
+              element={
+                <VehicleRentalPage
                   config={config}
                   onOpenBookingModal={handleOpenBookingModal}
                 />

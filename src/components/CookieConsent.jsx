@@ -99,7 +99,7 @@ export default function CookieConsent({ onOpenBookingModal }) {
         to learn more.
       </p>
 
-      <div style={{ display: 'flex', gap: '0.6rem', flexShrink: 0 }}>
+      <div className="cookie-consent-actions" style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', flexShrink: 0 }}>
         <button
           onClick={() => setConsent('rejected')}
           className="btn btn-outline btn-sm"
@@ -109,11 +109,19 @@ export default function CookieConsent({ onOpenBookingModal }) {
         </button>
         <button
           onClick={() => setConsent('accepted')}
-          className="btn btn-primary btn-sm"
+          className="btn btn-sm"
+          style={{ backgroundColor: 'var(--color-terracotta)', color: 'var(--color-ink-solid)', border: '1px solid var(--color-terracotta-hover)' }}
         >
           Accept
         </button>
       </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .cookie-consent-actions { width: 100%; }
+          .cookie-consent-actions button { flex: 1 1 0; }
+        }
+      `}</style>
     </div>
   );
 }

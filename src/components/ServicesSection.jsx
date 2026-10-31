@@ -193,23 +193,44 @@ export default function ServicesSection({ onOpenBookingModal, limit }) {
                     <ShieldCheck size={14} /> Desk Verified
                   </span>
 
-                  <button
-                    onClick={() => onOpenBookingModal({ service: srv.title })}
-                    className="service-book-btn"
-                    style={{
-                      fontSize: '0.85rem',
-                      fontWeight: '700',
-                      color: 'var(--color-terracotta)',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.3rem',
-                      cursor: 'pointer',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.02em'
-                    }}
-                  >
-                    Book Service <ArrowRight size={14} />
-                  </button>
+                  {srv.id === 'service-rental' ? (
+                    <Link
+                      to="/vehicle-rental"
+                      className="service-book-btn"
+                      style={{
+                        fontSize: '0.85rem',
+                        fontWeight: '700',
+                        color: 'var(--color-terracotta)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.3rem',
+                        cursor: 'pointer',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.02em',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      View Rental Fleet <ArrowRight size={14} />
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => onOpenBookingModal({ service: srv.title })}
+                      className="service-book-btn"
+                      style={{
+                        fontSize: '0.85rem',
+                        fontWeight: '700',
+                        color: 'var(--color-terracotta)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.3rem',
+                        cursor: 'pointer',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      Book Service <ArrowRight size={14} />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

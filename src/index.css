@@ -131,6 +131,12 @@ html.dark-mode {
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  /* Firefox doesn't support ::-webkit-scrollbar — without this it falls back
+     to the OS's default (often solid dark) scrollbar, which reads as a
+     misaligned dark bar cutting into the right edge of the layout. */
+  scrollbar-width: thin;
+  scrollbar-color: #E0CE8A var(--color-paper-bg);
 }
 
 /* Lenis smooth-scroll: let Lenis own the easing instead of native smooth-scroll */
