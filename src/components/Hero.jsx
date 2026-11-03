@@ -6,13 +6,13 @@ import HeroCard from './HeroCard';
 export default function Hero() {
   return (
     <HeroCard
-      video="/landing page.mp4"
+      video="/landing-hero.mp4"
       overlay
       overlayGradient="linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.25) 45%, rgba(0, 0, 0, 0.85) 100%)"
-      minHeight="620px"
+      minHeight="max(100vh, 720px)"
       wave={false}
       rounded={0}
-      style={{ height: '100vh' }}
+      style={{ height: 'auto', paddingBottom: '3.5rem' }}
     >
       {/* 3. Minimal Coordinates / Location Tag (Top Right) */}
       <div
@@ -36,7 +36,7 @@ export default function Hero() {
         style={{
           position: 'relative',
           zIndex: 10,
-          paddingTop: 'clamp(4rem, 10vw, 11.5rem)',
+          paddingTop: 'clamp(6rem, 8vw, 9rem)',
           textAlign: 'left',
           color: '#FFFFFF'
         }}

@@ -30,7 +30,6 @@ export default function BusesPage({ onOpenBookingModal, config }) {
         imageStyle={{ objectPosition: 'center 100%' }}
         overlayGradient="linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.15) 70%), linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.5) 100%)"
         minHeight="640px"
-        pullUnderHeader={false}
         rounded={0}
         contentStyle={{ maxWidth: 'none', margin: 0, padding: `0 1.25rem 0 clamp(2rem, 8vw, 6rem)` }}
       >
@@ -141,6 +140,7 @@ export default function BusesPage({ onOpenBookingModal, config }) {
               key={bus.id}
               ticketType={`PASSENGER BUS PASS #${idx + 1}`}
               title={bus.name}
+              seats={bus.capacity}
               subtitle={bus.specLine || `${bus.type} (${bus.capacity} Seats)`}
               origin={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[0].trim() : 'Bengaluru')}
               destination={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[1]?.split('(')[0].trim() : 'South India')}
@@ -156,7 +156,7 @@ export default function BusesPage({ onOpenBookingModal, config }) {
           ))}
         </div>
 
-        {/* Route Info — Terdal-Bengaluru Operators */}
+        {/* Routes — our own fleet */}
         <div
           style={{
             marginTop: '3.5rem',
@@ -169,18 +169,18 @@ export default function BusesPage({ onOpenBookingModal, config }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem' }}>
             <Bus size={20} style={{ color: 'var(--color-terracotta)' }} />
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--color-ink)' }}>
-              Terdal ↔ Bengaluru Route
+              Our Bus Routes
             </h3>
           </div>
 
           <p style={{ fontSize: '0.95rem', color: 'var(--color-ink-muted)', lineHeight: '1.7', marginBottom: '1.25rem' }}>
-            4 buses ply the Terdal ↔ Bengaluru route daily. Let us know which operator you'd like, and we'll help you book your seat:
+            Our 3 buses run these routes. Tell us which bus you'd like, and we'll help you book your seat:
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1rem' }}>
-            {['Vijayanand Travels', 'Royal Travels', 'Varalakshmi Travels', 'Siddeshwara Travels'].map((operator) => (
+            {FLEET.map((bus) => (
               <div
-                key={operator}
+                key={bus.id}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -217,10 +217,10 @@ export default function BusesPage({ onOpenBookingModal, config }) {
                   </div>
                   <div>
                     <div style={{ fontSize: '0.95rem', fontWeight: '700', color: 'var(--color-ink)' }}>
-                      {operator}
+                      {bus.name}
                     </div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--color-ink-muted)' }}>
-                      Terdal → Bengaluru
+                      {bus.primaryRoute}
                     </div>
                   </div>
                 </div>
@@ -228,9 +228,9 @@ export default function BusesPage({ onOpenBookingModal, config }) {
                 <button
                   className="btn btn-outline btn-sm"
                   style={{ width: '100%', justifyContent: 'center' }}
-                  onClick={() => onOpenBookingModal({ serviceType: 'Bus', selectedBus: operator, from: 'Terdal', to: 'Bengaluru' })}
+                  onClick={() => onOpenBookingModal({ serviceType: 'Bus', selectedBus: bus.name })}
                 >
-                  Book with {operator.split(' ')[0]} →
+                  Book {bus.name.replace('Prabhuling ', '')} →
                 </button>
               </div>
             ))}

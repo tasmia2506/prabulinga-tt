@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Briefcase, Phone, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Car, Users, Briefcase, Phone, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { buildWhatsAppLink } from '../utils/whatsapp';
 
 export default function VehicleRentalCard({ vehicle, whatsappNumber, phoneNumber, onEnquire }) {
@@ -32,14 +32,23 @@ export default function VehicleRentalCard({ vehicle, whatsappNumber, phoneNumber
         e.currentTarget.style.boxShadow = '0 4px 18px -2px rgba(0, 0, 0, 0.06)';
       }}
     >
-      {/* Placeholder photo banner */}
+      {/* Vehicle photo banner */}
       <div style={{ position: 'relative', height: '190px', width: '100%', overflow: 'hidden', backgroundColor: 'var(--color-paper-cream)' }}>
-        <img
-          src={vehicle.image}
-          alt={vehicle.name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          loading="lazy"
-        />
+        {vehicle.image ? (
+          <img
+            src={vehicle.image}
+            alt={vehicle.name}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%', display: 'block' }}
+            loading="lazy"
+          />
+        ) : (
+          <div
+            style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', color: 'var(--color-ink-soft, #555)' }}
+          >
+            <Car size={44} strokeWidth={1.5} />
+            <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>Photo coming soon</span>
+          </div>
+        )}
         <div className="tag-dark" style={{ position: 'absolute', top: '12px', left: '12px' }}>
           {vehicle.subType}
         </div>

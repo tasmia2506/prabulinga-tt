@@ -25,7 +25,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const whatsappNum = '8050172818';
+    const whatsappNum = (config?.whatsappNumber || '+918050172818').replace(/[^0-9]/g, '');
 
     let msg = `*PRABHULING TRAVEL AGENCY — TRAIN TICKET ENQUIRY*\n`;
     msg += `--------------------------------------\n`;
@@ -42,8 +42,8 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
     msg += `--------------------------------------\n`;
     msg += `*Sent via All-India Railway Desk*`;
 
-    const waUrl = `https://wa.me/91${whatsappNum}?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
+    const waUrl = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     setIsSubmitted(true);
   };
 
@@ -155,7 +155,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.75rem', color: 'var(--color-terracotta)', letterSpacing: '0.1em' }}>
                 INDIAN RAILWAYS RESERVATION REQUISITION
               </span>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.1rem', fontWeight: '800', color: 'var(--color-ink)', lineHeight: '1.15' }}>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 6.4vw, 2.1rem)', fontWeight: '800', wordBreak: 'break-word', color: 'var(--color-ink)', lineHeight: '1.15' }}>
                 RESERVE ANY TRAIN TICKET IN INDIA
               </h2>
             </div>
@@ -184,11 +184,11 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               {/* Row 1: Name & Phone */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>PASSENGER FULL NAME *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>PASSENGER FULL NAME<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">2-60 letters</span></label>
                   <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Suresh Kumar" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>MOBILE NUMBER *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>MOBILE NUMBER<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">10-digit mobile number</span></label>
                   <input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="10-digit phone number" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
               </div>
@@ -196,11 +196,11 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               {/* Row 2: From & To Station */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>FROM STATION (ORIGIN) *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>FROM STATION (ORIGIN)<span className="req-mark" aria-hidden="true"> *</span></label>
                   <input type="text" required value={formData.fromStation} onChange={(e) => setFormData({ ...formData, fromStation: e.target.value })} placeholder="Enter Origin Station / City" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>TO STATION (DESTINATION) *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>TO STATION (DESTINATION)<span className="req-mark" aria-hidden="true"> *</span></label>
                   <input type="text" required value={formData.toStation} onChange={(e) => setFormData({ ...formData, toStation: e.target.value })} placeholder="Enter Destination Station / City" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               {/* Row 3: Date, Class & Quota */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>JOURNEY DATE *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>JOURNEY DATE<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">today or later</span></label>
                   <input type="date" required value={formData.journeyDate} onChange={(e) => setFormData({ ...formData, journeyDate: e.target.value })} style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
                 <div>
@@ -261,7 +261,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
 
               {/* Row 5: Notes */}
               <div>
-                <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>TRAIN NAME / SPECIFIC NUMBER (OPTIONAL)</label>
+                <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>TRAIN NAME / SPECIFIC NUMBER (OPTIONAL)<span className="field-hint">2-60 letters</span></label>
                 <input type="text" value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} placeholder="e.g. Vande Bharat Express, Rajdhani Express, preferred time..." style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
               </div>
 

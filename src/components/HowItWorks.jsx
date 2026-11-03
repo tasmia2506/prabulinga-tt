@@ -71,7 +71,7 @@ export default function HowItWorks() {
               paperType="sheet"
               padding="1.6rem"
               style={{
-                backgroundColor: 'rgba(253, 251, 247, 0.95)',
+                backgroundColor: 'var(--color-paper-sheet)',
                 backdropFilter: 'blur(4px)',
                 boxShadow: 'var(--shadow-stacked)'
               }}

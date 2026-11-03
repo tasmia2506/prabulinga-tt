@@ -46,7 +46,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
     });
     
     setIsSubmitted(true);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   if (!isOpen) return null;
@@ -70,11 +70,11 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: '#FDFBF7',
+          backgroundColor: 'var(--color-paper-sheet)',
           borderRadius: 'var(--radius-lg)',
           width: '100%',
           maxWidth: '600px',
-          maxHeight: '90vh',
+          maxHeight: '92dvh',
           overflowY: 'auto',
           boxShadow: 'var(--shadow-stacked)',
           border: '1.5px solid var(--color-border-strong)',
@@ -86,11 +86,11 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
           style={{
             backgroundColor: 'var(--color-ink-solid)',
             color: '#FFFFFF',
-            padding: '1.5rem 1.75rem',
+            padding: 'clamp(1rem, 4vw, 1.5rem) clamp(1rem, 4vw, 1.75rem)',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
-            flexWrap: 'wrap',
+            flexWrap: 'nowrap',
             gap: '0.75rem',
             position: 'sticky',
             top: 0,
@@ -101,7 +101,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
             <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-terracotta)', letterSpacing: '0.12em' }}>
               OFFICIAL TRAVEL MANIFESTO
             </div>
-            <h3 style={{ fontFamily: 'var(--font-display)', color: '#FFFFFF', fontSize: '1.45rem', marginTop: '0.25rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', color: '#FFFFFF', fontSize: 'clamp(1.1rem, 5.2vw, 1.45rem)', marginTop: '0.25rem', lineHeight: 1.25 }}>
               {selectedBus ? `Book ${selectedBus}` : packageTitle ? `Enquire ${packageTitle}` : `${serviceType === 'TourPackage' ? 'Tour Package' : serviceType === 'BusRental' ? 'Bus Rental' : serviceType} Reservation Dossier`}
             </h3>
           </div>
@@ -118,7 +118,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
               justifyContent: 'center',
               cursor: 'pointer',
               flexShrink: 0,
-              marginLeft: '1rem'
+              marginLeft: '0.5rem'
             }}
           >
             <X size={20} />
@@ -126,7 +126,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
         </div>
 
         {/* Modal Content */}
-        <div style={{ padding: '1.75rem' }}>
+        <div style={{ padding: 'clamp(1rem, 4vw, 1.75rem)' }}>
           {isSubmitted ? (
             <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
               <CheckCircle2 size={46} style={{ color: 'var(--color-forest)', margin: '0 auto 0.75rem auto' }} />
@@ -167,19 +167,19 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
               {/* Grid Fields */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.1rem', marginBottom: '1.1rem' }}>
                 <div>
-                  <label className="booking-field-label">From / Pickup</label>
+                  <label className="booking-field-label">From / Pickup<span className="req-mark" aria-hidden="true"> *</span></label>
                   <input type="text" required placeholder="e.g. Bengaluru" value={from} onChange={(e) => setFrom(e.target.value)} className="booking-input" />
                 </div>
 
                 <div>
-                  <label className="booking-field-label">To / Destination</label>
+                  <label className="booking-field-label">To / Destination<span className="req-mark" aria-hidden="true"> *</span></label>
                   <input type="text" required placeholder="e.g. Gokarna / Coorg" value={to} onChange={(e) => setTo(e.target.value)} className="booking-input" />
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.1rem', marginBottom: '1.5rem' }}>
                 <div>
-                  <label className="booking-field-label">Journey Date</label>
+                  <label className="booking-field-label">Journey Date<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">today or later</span></label>
                   <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} className="booking-input" />
                 </div>
 
@@ -201,15 +201,22 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
                   Your Details
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem', marginBottom: '0.85rem' }}>
-                  <input type="text" required placeholder="Your Full Name" value={name} onChange={(e) => setName(e.target.value)} className="booking-input" />
-                  <input type="tel" required placeholder="Mobile Number" value={phone} onChange={(e) => setPhone(e.target.value)} className="booking-input" />
+                  <div>
+                    <label className="booking-field-label">Full Name<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">2-60 letters</span></label>
+                    <input type="text" required placeholder="e.g. Ramesh Kulkarni" value={name} onChange={(e) => setName(e.target.value)} className="booking-input" />
+                  </div>
+                  <div>
+                    <label className="booking-field-label">Mobile Number<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">10-digit mobile number</span></label>
+                    <input type="tel" required placeholder="e.g. 98765 43210" value={phone} onChange={(e) => setPhone(e.target.value)} className="booking-input" />
+                  </div>
                 </div>
 
+                <label className="booking-field-label">Special Requests <span className="field-hint" style={{display:'inline'}}>(optional, max 500 characters)</span></label>
                 <textarea placeholder="Special requests, berth preference..." rows={2} value={message} onChange={(e) => setMessage(e.target.value)} className="booking-input" style={{ resize: 'vertical' }} />
               </div>
 
               {/* Action */}
-              <button type="submit" className="btn btn-whatsapp" style={{ width: '100%', padding: '0.9rem 1rem', fontSize: '1rem', gap: '0.6rem' }}>
+              <button type="submit" className="btn btn-whatsapp" style={{ width: '100%', padding: '0.9rem 1rem', fontSize: 'clamp(0.85rem, 3.9vw, 1rem)', gap: '0.5rem', whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.3 }}>
                 <MessageSquare size={20} /> Launch WhatsApp Booking →
               </button>
 

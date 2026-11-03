@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SITE_URL = 'https://www.prabhulingtravels.com';
-const DEFAULT_IMAGE = `${SITE_URL}/home2.jfif`;
+const DEFAULT_IMAGE = `${SITE_URL}/home2.jpg`;
 
 export default function Seo({
   title,

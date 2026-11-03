@@ -224,7 +224,7 @@ export default function TicketCard({
       <style>{`
         .ticket-layout-grid {
           display: grid;
-          grid-template-columns: 210px 2px 1fr;
+          grid-template-columns: 210px 2px minmax(0, 1fr);
           align-items: stretch;
           min-height: 480px;
         }
@@ -252,7 +252,7 @@ export default function TicketCard({
 
         @media (max-width: 768px) {
           .ticket-layout-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             grid-template-rows: auto auto 1fr;
           }
 
@@ -273,6 +273,10 @@ export default function TicketCard({
           .ticket-body-section {
             padding: 1.5rem 1.25rem;
           }
+        }
+        @media (max-width: 480px) {
+          .ticket-body-section { padding: 1.5rem 1.1rem !important; }
+          .ticket-card-exact select, .ticket-card-exact input, .ticket-card-exact textarea { min-width: 0; max-width: 100%; }
         }
       `}</style>
     </div>

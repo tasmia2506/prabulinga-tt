@@ -35,7 +35,7 @@ export default function Header({ config, onOpenBookingModal, isDarkMode, onToggl
     { label: 'Contact', path: '/contact' },
   ];
 
-  const blended = isHome && !scrolled;
+  const blended = isHome && !scrolled && !isMobileMenuOpen;
   const textColor = blended ? '#FFFFFF' : 'var(--color-ink)';
   const tagColor = 'var(--color-terracotta)';
 

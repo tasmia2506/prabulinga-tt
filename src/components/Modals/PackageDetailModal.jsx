@@ -22,7 +22,7 @@ export default function PackageDetailModal({ packageData, isOpen, onClose, onEnq
     >
       <div
         style={{
-          backgroundColor: '#FDFBF7',
+          backgroundColor: 'var(--color-paper-sheet)',
           borderRadius: '6px',
           width: '100%',
           maxWidth: '680px',
