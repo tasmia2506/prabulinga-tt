@@ -54,13 +54,13 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
 
       {/* Interactive Bus Search Bar */}
       <div className="container" style={{ marginTop: '-2rem', position: 'relative', zIndex: 10 }}>
-        <div style={{ backgroundColor: '#FFFFFF', padding: '1.5rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--color-border)' }}>
+        <div style={{ backgroundColor: 'var(--color-paper-sheet)', padding: '1.5rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--color-border)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', alignItems: 'end' }}>
             <div>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-text-muted)', marginBottom: '0.35rem' }}>FROM CITY</label>
               <div style={{ position: 'relative' }}>
                 <MapPin size={18} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-accent)' }} />
-                <select value={fromCity} onChange={(e) => setFromCity(e.target.value)} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: '#FAF7F2', fontWeight: '600' }}>
+                <select value={fromCity} onChange={(e) => setFromCity(e.target.value)} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: 'var(--color-paper-cream)', fontWeight: '600' }}>
                   <option>Bengaluru</option>
                   <option>Mysuru</option>
                   <option>Mangaluru</option>
@@ -76,7 +76,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-text-muted)', marginBottom: '0.35rem' }}>TO DESTINATION</label>
               <div style={{ position: 'relative' }}>
                 <MapPin size={18} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-primary)' }} />
-                <select value={toCity} onChange={(e) => setToCity(e.target.value)} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: '#FAF7F2', fontWeight: '600' }}>
+                <select value={toCity} onChange={(e) => setToCity(e.target.value)} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: 'var(--color-paper-cream)', fontWeight: '600' }}>
                   <option>Goa</option>
                   <option>Bengaluru</option>
                   <option>Mysuru</option>
@@ -88,10 +88,10 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-text-muted)', marginBottom: '0.35rem' }}>JOURNEY DATE</label>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-text-muted)', marginBottom: '0.35rem' }}>JOURNEY DATE<span className="field-hint">today or later</span></label>
               <div style={{ position: 'relative' }}>
                 <Calendar size={18} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-secondary)' }} />
-                <input type="date" value={journeyDate} onChange={(e) => setJourneyDate(e.target.value)} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: '#FAF7F2', fontWeight: '600' }} />
+                <input type="date" value={journeyDate} onChange={(e) => setJourneyDate(e.target.value)} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: 'var(--color-paper-cream)', fontWeight: '600' }} />
               </div>
             </div>
 
@@ -99,7 +99,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-text-muted)', marginBottom: '0.35rem' }}>PASSENGERS</label>
               <div style={{ position: 'relative' }}>
                 <Users size={18} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-primary)' }} />
-                <select value={passengers} onChange={(e) => setPassengers(Number(e.target.value))} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: '#FAF7F2', fontWeight: '600' }}>
+                <select value={passengers} onChange={(e) => setPassengers(Number(e.target.value))} style={{ width: '100%', padding: '0.75rem 0.75rem 0.75rem 2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border-strong)', backgroundColor: 'var(--color-paper-cream)', fontWeight: '600' }}>
                   {[1, 2, 3, 4, 5, 6, 8, 10].map(n => <option key={n} value={n}>{n} {n === 1 ? 'Seat' : 'Seats'}</option>)}
                 </select>
               </div>
@@ -127,7 +127,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
           </div>
 
           {/* Filter Pills */}
-          <div style={{ display: 'flex', gap: '0.5rem', backgroundColor: '#FFFFFF', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', backgroundColor: 'var(--color-paper-sheet)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', flexWrap: 'wrap' }}>
             {['All', 'Sleeper', 'Seater', 'AC'].map(type => (
               <button
                 key={type}
@@ -173,7 +173,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
 
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                     {bus.amenities.slice(0, 4).map((item, idx) => (
-                      <span key={idx} style={{ fontSize: '0.75rem', backgroundColor: '#FAF7F2', padding: '0.2rem 0.55rem', borderRadius: '4px', border: '1px solid var(--color-border)', color: 'var(--color-text-main)' }}>
+                      <span key={idx} style={{ fontSize: '0.75rem', backgroundColor: 'var(--color-paper-cream)', padding: '0.2rem 0.55rem', borderRadius: '4px', border: '1px solid var(--color-border)', color: 'var(--color-text-main)' }}>
                         ✓ {item}
                       </span>
                     ))}
@@ -181,7 +181,7 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
                 </div>
 
                 {/* Schedule Column */}
-                <div style={{ backgroundColor: '#FAF7F2', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
+                <div style={{ backgroundColor: 'var(--color-paper-cream)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
                   <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-text-muted)', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Departure & Route</div>
                   <div style={{ fontWeight: '700', color: 'var(--color-primary)', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
                     {bus.schedule}
@@ -219,13 +219,13 @@ export default function BusBookingPage({ config, onOpenBookingModal }) {
 
               {/* Interactive Seat Layout Preview Drawer */}
               {selectedSeatBus === bus.id && (
-                <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--color-border)', backgroundColor: '#FAF7F2', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
+                <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
                     <div style={{ fontWeight: '700', color: 'var(--color-primary)', fontSize: '0.95rem' }}>
                       Interactive Seat Availability Diagram ({bus.seatLayout.type})
                     </div>
                     <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', flexWrap: 'wrap' }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', border: '1px solid var(--color-border-strong)', backgroundColor: '#FFFFFF' }}></span> Available</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', border: '1px solid var(--color-border-strong)', backgroundColor: 'var(--color-paper-sheet)' }}></span> Available</span>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'var(--color-accent)' }}></span> Selected</span>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><span style={{ width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'var(--color-border-strong)' }}></span> Booked</span>
                     </div>

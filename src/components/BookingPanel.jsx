@@ -33,7 +33,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
       <div className="container">
         <div
           style={{
-            backgroundColor: '#FDFBF7',
+            backgroundColor: 'var(--color-paper-sheet)',
             borderRadius: '12px',
             border: '1px solid rgba(195, 180, 160, 0.45)',
             boxShadow: '0 12px 32px -4px rgba(0, 0, 0, 0.14)',
@@ -116,8 +116,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
               {/* From Field */}
               <div>
                 <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem', letterSpacing: '0.08em' }}>
-                  ORIGIN CITY
-                </label>
+                  ORIGIN CITY</label>
                 <div style={{ position: 'relative' }}>
                   <MapPin size={17} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-terracotta)' }} />
                   <input
@@ -137,7 +136,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
                   type="button"
                   onClick={handleSwap}
                   title="Swap Cities"
-                  style={{ padding: '0.65rem', borderRadius: '50%', border: '1px solid var(--color-border)', backgroundColor: '#FFFFFF', color: 'var(--color-forest)', boxShadow: '0 2px 6px rgba(0,0,0,0.06)' }}
+                  style={{ padding: '0.65rem', borderRadius: '50%', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-sheet)', color: 'var(--color-forest)', boxShadow: '0 2px 6px rgba(0,0,0,0.06)' }}
                 >
                   <ArrowRightLeft size={16} />
                 </button>
@@ -146,8 +145,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
               {/* To Field */}
               <div>
                 <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem', letterSpacing: '0.08em' }}>
-                  DESTINATION CITY
-                </label>
+                  DESTINATION CITY</label>
                 <div style={{ position: 'relative' }}>
                   <MapPin size={17} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-terracotta)' }} />
                   <input
@@ -164,8 +162,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
               {/* Date Field */}
               <div>
                 <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem', letterSpacing: '0.08em' }}>
-                  TRAVEL DATE
-                </label>
+                  TRAVEL DATE<span className="field-hint">today or later</span></label>
                 <div style={{ position: 'relative' }}>
                   <Calendar size={17} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-forest)' }} />
                   <input
@@ -181,8 +178,7 @@ export default function BookingPanel({ onOpenBookingModal }) {
               {/* Passengers Field */}
               <div>
                 <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem', letterSpacing: '0.08em' }}>
-                  PASSENGERS
-                </label>
+                  PASSENGERS</label>
                 <div style={{ position: 'relative' }}>
                   <Users size={17} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-forest)' }} />
                   <select

@@ -22,7 +22,7 @@ export default function ConfigDrawer({ config, onUpdateConfig, isOpen, onClose }
 
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 2500, backgroundColor: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(4px)', display: 'flex', justifyContent: 'flex-end' }} className="animate-fade-in">
-      <div style={{ backgroundColor: '#FFFFFF', width: '100%', maxWidth: '420px', height: '100%', padding: '1.5rem', boxShadow: 'var(--shadow-lg)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <div style={{ backgroundColor: 'var(--color-paper-sheet)', width: '100%', maxWidth: '420px', height: '100%', padding: '1.5rem', boxShadow: 'var(--shadow-lg)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem' }}>

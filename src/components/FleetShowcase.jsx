@@ -64,6 +64,7 @@ export default function FleetShowcase({ onOpenBusDetailModal, onOpenBookingModal
               key={bus.id}
               ticketType={`PASSENGER BUS PASS #${idx + 1}`}
               title={bus.name}
+              seats={bus.capacity}
               subtitle={bus.specLine || `${bus.type} (${bus.capacity} Seats)`}
               origin={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[0].trim() : 'Bengaluru')}
               destination={bus.id === 'bus-1' ? '' : (bus.primaryRoute ? bus.primaryRoute.split('↔')[1]?.split('(')[0].trim() : 'South India')}

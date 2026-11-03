@@ -79,7 +79,7 @@ export default function TourPackages({ onOpenPackageModal, onOpenBookingModal })
                             key={i}
                             style={{
                               fontSize: '0.775rem',
-                              backgroundColor: '#FFFFFF',
+                              backgroundColor: 'var(--color-paper-sheet)',
                               border: '1px solid var(--color-border)',
                               padding: '0.25rem 0.7rem',
                               borderRadius: '30px',

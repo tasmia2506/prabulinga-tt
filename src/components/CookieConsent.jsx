@@ -60,7 +60,7 @@ export default function CookieConsent({ onOpenBookingModal }) {
         left: '1rem',
         right: '1rem',
         bottom: '1rem',
-        zIndex: 3000,
+        zIndex: 1500,
         maxWidth: '620px',
         margin: '0 auto',
         backgroundColor: 'var(--color-ink-solid)',
@@ -74,9 +74,10 @@ export default function CookieConsent({ onOpenBookingModal }) {
         alignItems: 'center',
         gap: '1rem'
       }}
-      className="animate-fade-in"
+      className="animate-fade-in cookie-consent-box"
     >
       <div
+        className="cookie-consent-icon"
         style={{
           width: '38px',
           height: '38px',
@@ -118,6 +119,9 @@ export default function CookieConsent({ onOpenBookingModal }) {
 
       <style>{`
         @media (max-width: 480px) {
+          .cookie-consent-box { left: 0.5rem !important; right: 0.5rem !important; bottom: 0.5rem !important; padding: 0.85rem 1rem !important; gap: 0.6rem !important; }
+          .cookie-consent-box p { font-size: 0.78rem !important; line-height: 1.45 !important; flex-basis: 100% !important; }
+          .cookie-consent-icon { display: none !important; }
           .cookie-consent-actions { width: 100%; }
           .cookie-consent-actions button { flex: 1 1 0; }
         }

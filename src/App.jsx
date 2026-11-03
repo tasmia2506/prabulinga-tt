@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Layout & Global Helper
@@ -8,6 +8,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SlowmoScrollObserver from './components/SlowmoScrollObserver';
 import SmoothScroll from './components/SmoothScroll';
 import CookieConsent from './components/CookieConsent';
+import FormConstraints from './components/FormConstraints';
 
 // Modals & Config Drawer
 import BookingModal from './components/Modals/BookingModal';
@@ -16,21 +17,21 @@ import PackageDetailModal from './components/Modals/PackageDetailModal';
 import ConfigDrawer from './components/ConfigDrawer';
 
 // Dedicated Page Components
-import HomePage from './pages/HomePage';
-import BusesPage from './pages/BusesPage';
-import VehicleRentalPage from './pages/VehicleRentalPage';
-import BusDetailPage from './pages/BusDetailPage';
-import FlightBookingPage from './pages/FlightBookingPage';
-import TrainBookingPage from './pages/TrainBookingPage';
-import ToursPage from './pages/ToursPage';
-import TourDetailPage from './pages/TourDetailPage';
-import DestinationsPage from './pages/DestinationsPage';
-import ServicesPage from './pages/ServicesPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import GeneralBookingPage from './pages/GeneralBookingPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsPage from './pages/TermsPage';
+const HomePage = lazy(() => import('./pages/HomePage'));
+const BusesPage = lazy(() => import('./pages/BusesPage'));
+const VehicleRentalPage = lazy(() => import('./pages/VehicleRentalPage'));
+const BusDetailPage = lazy(() => import('./pages/BusDetailPage'));
+const FlightBookingPage = lazy(() => import('./pages/FlightBookingPage'));
+const TrainBookingPage = lazy(() => import('./pages/TrainBookingPage'));
+const ToursPage = lazy(() => import('./pages/ToursPage'));
+const TourDetailPage = lazy(() => import('./pages/TourDetailPage'));
+const DestinationsPage = lazy(() => import('./pages/DestinationsPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const GeneralBookingPage = lazy(() => import('./pages/GeneralBookingPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
 
 // Default Business Config
 import { DEFAULT_CONFIG } from './data/config';
@@ -93,6 +94,7 @@ export default function App() {
       <ScrollToTop />
       <SmoothScroll />
       <SlowmoScrollObserver />
+      <FormConstraints />
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-bg-main)' }}>
         {/* Navigation Header */}
         <Header
@@ -104,6 +106,7 @@ export default function App() {
 
         {/* Main Route Content */}
         <main style={{ flex: 1 }}>
+          <Suspense fallback={<div style={{ minHeight: '60vh' }} aria-busy="true" />}>
           <Routes>
             <Route
               path="/"
@@ -246,6 +249,7 @@ export default function App() {
               }
             />
           </Routes>
+          </Suspense>
         </main>
 
         {/* Footer */}

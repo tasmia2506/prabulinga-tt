@@ -60,7 +60,7 @@ export default function ContactPage({ config }) {
     messageText += `*Sent via Website Contact Form*`;
 
     const waUrl = `https://wa.me/${whatsappDigits}?text=${encodeURIComponent(messageText)}`;
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     setIsSubmitted(true);
   };
 
@@ -213,11 +213,11 @@ export default function ContactPage({ config }) {
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
                       <div>
-                        <label style={LABEL_STYLE}>Your Name *</label>
+                        <label style={LABEL_STYLE}>Your Name<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">2-60 letters</span></label>
                         <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Ramesh Kulkarni" style={INPUT_STYLE} />
                       </div>
                       <div>
-                        <label style={LABEL_STYLE}>Phone / WhatsApp *</label>
+                        <label style={LABEL_STYLE}>Phone / WhatsApp<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">10-digit mobile number</span></label>
                         <input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+91 98XXX XXXXX" style={INPUT_STYLE} />
                       </div>
                     </div>
@@ -237,11 +237,11 @@ export default function ContactPage({ config }) {
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
                       <div>
-                        <label style={LABEL_STYLE}>Travel Date *</label>
+                        <label style={LABEL_STYLE}>Travel Date<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">today or later</span></label>
                         <input type="date" required value={formData.travelDate} onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })} style={INPUT_STYLE} />
                       </div>
                       <div>
-                        <label style={LABEL_STYLE}>Return Date (if round-trip)</label>
+                        <label style={LABEL_STYLE}>Return Date (if round-trip)<span className="field-hint">on/after travel date</span></label>
                         <input type="date" value={formData.returnDate} onChange={(e) => setFormData({ ...formData, returnDate: e.target.value })} style={INPUT_STYLE} />
                       </div>
                     </div>

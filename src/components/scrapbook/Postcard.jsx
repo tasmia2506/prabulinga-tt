@@ -18,7 +18,7 @@ export default function Postcard({
       className="tilt-card"
       style={{
         position: 'relative',
-        backgroundColor: '#FDFBF7',
+        backgroundColor: 'var(--color-paper-sheet)',
         border: '1px solid rgba(190, 175, 155, 0.6)',
         borderRadius: '4px',
         padding: '1.25rem',

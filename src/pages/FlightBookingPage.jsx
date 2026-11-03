@@ -25,7 +25,7 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const whatsappNum = '8050172818';
+    const whatsappNum = (config?.whatsappNumber || '+918050172818').replace(/[^0-9]/g, '');
 
     let msg = `*PRABHULING TRAVEL AGENCY — FLIGHT TICKET ENQUIRY*\n`;
     msg += `--------------------------------------\n`;
@@ -42,8 +42,8 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
     msg += `--------------------------------------\n`;
     msg += `*Sent via Flight Desk*`;
 
-    const waUrl = `https://wa.me/91${whatsappNum}?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
+    const waUrl = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     setIsSubmitted(true);
   };
 
@@ -154,7 +154,7 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
               <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.75rem', color: 'var(--color-ocean-blue)', letterSpacing: '0.1em' }}>
                 FLIGHT REQUISITION DESK
               </span>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.1rem', fontWeight: '800', color: 'var(--color-ink)', lineHeight: '1.15' }}>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 6.4vw, 2.1rem)', fontWeight: '800', wordBreak: 'break-word', color: 'var(--color-ink)', lineHeight: '1.15' }}>
                 RESERVE ANY FLIGHT TICKET
               </h2>
             </div>
@@ -183,11 +183,11 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
               {/* Row 1: Name & Phone */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>PASSENGER FULL NAME *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>PASSENGER FULL NAME<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">2-60 letters</span></label>
                   <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Ananya Sharma" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>MOBILE NUMBER *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>MOBILE NUMBER<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">10-digit mobile number</span></label>
                   <input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="10-digit mobile number" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
               </div>
@@ -195,11 +195,11 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
               {/* Row 2: From & To City */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>FROM CITY / AIRPORT *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>FROM CITY / AIRPORT<span className="req-mark" aria-hidden="true"> *</span></label>
                   <input type="text" required value={formData.fromCity} onChange={(e) => setFormData({ ...formData, fromCity: e.target.value })} placeholder="Enter Origin City or Airport Code (e.g. BLR)" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>TO CITY / AIRPORT *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>TO CITY / AIRPORT<span className="req-mark" aria-hidden="true"> *</span></label>
                   <input type="text" required value={formData.toCity} onChange={(e) => setFormData({ ...formData, toCity: e.target.value })} placeholder="Enter Destination City or Airport Code (e.g. GOI, DEL, BOM)" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
               </div>
@@ -207,11 +207,11 @@ export default function FlightBookingPage({ config, onOpenBookingModal }) {
               {/* Row 3: Depart Date & Return Date */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>DEPARTURE DATE *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>DEPARTURE DATE<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">today or later</span></label>
                   <input type="date" required value={formData.departDate} onChange={(e) => setFormData({ ...formData, departDate: e.target.value })} style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>RETURN DATE (OPTIONAL FOR ROUND-TRIP)</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.35rem' }}>RETURN DATE (OPTIONAL FOR ROUND-TRIP)<span className="field-hint">on/after travel date</span></label>
                   <input type="date" value={formData.returnDate} onChange={(e) => setFormData({ ...formData, returnDate: e.target.value })} style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-paper-cream)' }} />
                 </div>
               </div>

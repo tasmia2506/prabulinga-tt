@@ -3,19 +3,12 @@
 // This is a private-hire fleet available on request through our verified
 // driver-partner network for local, outstation & group trips.
 //
-// NOTE: `image` fields are representative stock photos of the matching
-// model/vehicle type (sourced from Wikimedia Commons) — swap each one for
-// an actual photo of your own vehicle before launch, and confirm the
-// Commons file's license/attribution requirements if you keep using it.
+// NOTE: `image` fields are real fleet photos (names and plates removed), matched to the
+// exact model. The Etios photo is CC0 (Wikimedia Commons, "Toyota Etios, by UNICAB").
 // Batta (driver daily allowance) figures are indicative only — always
 // confirm the final fare, batta & toll/parking actuals with our desk.
 
-export const VEHICLE_CATEGORIES = ["All", "Cars", "Tempo Traveller"];
-
-const IMG_SEDAN = "/vehicle-car-sedan.jpg";
-const IMG_SUV_INNOVA = "/vehicle-car-suv-innova.jpg";
-const IMG_SUV_FORTUNER = "/vehicle-car-suv-fortuner.jpg";
-const IMG_TEMPO = "/vehicle-tempo-traveller.jpg";
+export const VEHICLE_CATEGORIES = ["All", "Cars", "Tempo Traveller", "Mini Bus"];
 
 export const VEHICLE_RENTAL_FLEET = [
   // ----- CARS: SEDAN -----
@@ -29,7 +22,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 300,
-    image: IMG_SEDAN,
+    image: "/vehicles/car-swift-dzire.jpg",
     description: "A compact, fuel-efficient sedan for city rides, airport runs & short outstation trips.",
     amenities: ["Air Conditioning", "Music System", "Charging Points"],
   },
@@ -43,7 +36,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 300,
-    image: IMG_SEDAN,
+    image: "/vehicles/car-toyota-etios.jpg",
     description: "Reliable, air-conditioned sedan best suited for local city drops, airport transfers & short outstation runs.",
     amenities: ["Air Conditioning", "Music System", "Charging Points"],
   },
@@ -59,7 +52,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 400,
-    image: IMG_SUV_INNOVA,
+    image: "/vehicles/car-maruti-ertiga.jpg",
     description: "A spacious MUV that comfortably seats small families with extra luggage room.",
     amenities: ["Air Conditioning", "Music System", "Charging Points", "Push-back Seats"],
   },
@@ -73,7 +66,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 400,
-    image: IMG_SUV_INNOVA,
+    image: "/vehicles/car-toyota-innova.jpg",
     description: "A dependable, well-maintained Toyota Innova offering spacious 7-seater comfort for family & group trips.",
     amenities: ["Air Conditioning", "Music System", "Charging Points", "Push-back Seats"],
   },
@@ -87,7 +80,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 450,
-    image: IMG_SUV_INNOVA,
+    image: "/vehicles/car-innova-crysta.jpg",
     description: "A premium, more refined step up from the Innova with a quieter, plusher cabin for highway & ghat drives.",
     amenities: ["Air Conditioning", "Music System", "Charging Points", "Push-back Seats", "Individual Rear AC Vents"],
   },
@@ -101,7 +94,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 450,
-    image: IMG_SUV_INNOVA,
+    image: "/vehicles/car-innova-hycross.jpg",
     description: "Our newest-generation SUV with a modern cabin, captain seats & smoother, refined suspension.",
     amenities: ["Air Conditioning", "Music System", "Charging Points", "Captain Seats", "Individual Rear AC Vents"],
   },
@@ -115,7 +108,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 250,
     battaPerDay: 500,
-    image: IMG_SUV_FORTUNER,
+    image: "/vehicles/car-toyota-fortuner.jpg",
     description: "Our premium full-size SUV offering a commanding ride, plush captain-style seating & strong AC performance for long highway drives.",
     amenities: ["Air Conditioning", "Music System", "Charging Points", "Captain Seats", "Generous Ground Clearance"],
   },
@@ -131,7 +124,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 300,
     battaPerDay: 500,
-    image: IMG_TEMPO,
+    image: "/vehicles/tempo-9-seater.jpg",
     description: "A well-suited group vehicle for small family outings, pilgrimage trips & short group tours.",
     amenities: ["Air Conditioning", "Push-back Seats", "Reading Lights", "Roof Carrier"],
   },
@@ -145,7 +138,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 300,
     battaPerDay: 600,
-    image: IMG_TEMPO,
+    image: "/vehicles/tempo-12-seater.jpg",
     description: "A premium 12-seater with captain-style seating, comfortable for group tours & corporate transfers.",
     amenities: ["Air Conditioning", "Captain Seats", "Ambient Cabin Lighting", "Rear Storage"],
   },
@@ -159,7 +152,7 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 300,
     battaPerDay: 700,
-    image: IMG_TEMPO,
+    image: "/vehicles/tempo-17-seater.jpg",
     description: "A comfortable 17-seater with push-back seats, well suited for medium-sized group tours & outstation trips.",
     amenities: ["Air Conditioning", "Push-back Seats", "Reading Lights", "Roof Carrier"],
   },
@@ -173,12 +166,40 @@ export const VEHICLE_RENTAL_FLEET = [
     ac: true,
     minKmPerDay: 300,
     battaPerDay: 700,
-    image: IMG_TEMPO,
+    image: "/vehicles/tempo-force-urbania.jpg",
     description: "A modern, van-style group vehicle with a smoother ride & contemporary cabin for premium group travel.",
     amenities: ["Air Conditioning", "Push-back Seats", "Reading Lights", "Rear Storage"],
   },
+  // ----- MINI BUSES -----
+  {
+    id: "minibus-21-seater",
+    name: "21 Seater Mini Bus",
+    category: "Mini Bus",
+    subType: "Mini Bus",
+    seats: 21,
+    bags: 20,
+    ac: true,
+    minKmPerDay: 300,
+    battaPerDay: 600,
+    image: "/vehicles/minibus-21-seater.jpg",
+    description: "A compact luxury coach for groups of 14-20 that is easier to manoeuvre than a full-size bus on hill-station & city roads.",
+    amenities: ["Air Conditioning", "Push-back Seats", "USB Charging", "Overhead Racks"],
+  },
+  {
+    id: "minibus-25-seater",
+    name: "25 Seater Mini Bus",
+    category: "Mini Bus",
+    subType: "Mini Bus",
+    seats: 25,
+    bags: 20,
+    ac: true,
+    minKmPerDay: 300,
+    battaPerDay: 600,
+    image: "/vehicles/minibus-25-seater.jpg",
+    description: "A comfortable mid-size coach for larger family, wedding & corporate groups on outstation and local trips.",
+    amenities: ["Air Conditioning", "Push-back Seats", "USB Charging", "Overhead Racks"],
+  },
 ];
-
 export const VEHICLE_RENTAL_TERMS = [
   "Driver batta (daily allowance) is charged per day the vehicle is on duty, in addition to the running fare.",
   "Toll, parking, state permit & interstate taxes are charged extra, as per actuals.",

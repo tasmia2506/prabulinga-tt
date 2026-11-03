@@ -15,7 +15,7 @@ export default function Polaroid({
       onClick={onClick}
       style={{
         position: 'relative',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'var(--color-paper-sheet)',
         padding: '0.75rem 0.75rem 1.25rem 0.75rem',
         borderRadius: '8px',
         boxShadow: '0 8px 24px -4px rgba(0, 0, 0, 0.08)',

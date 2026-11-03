@@ -45,7 +45,7 @@ export default function GeneralBookingPage({ config }) {
     messageText += `*Sent via Booking Manifesto Form*`;
 
     const waUrl = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(messageText)}`;
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     setIsSubmitted(true);
   };
 
@@ -74,6 +74,7 @@ export default function GeneralBookingPage({ config }) {
         title="Request a Free Quote"
         description="Request a free travel quote from Prabhuling Travel Agency & Online Services — bus, flight, railway, tour package or charter enquiries answered on WhatsApp or by phone."
         path="/booking"
+        noindex
       />
       <MapFragment opacity={0.06} />
 
@@ -130,7 +131,7 @@ export default function GeneralBookingPage({ config }) {
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 {/* Service Selector Tiles */}
                 <div>
-                  <label style={labelStyle}>SELECT SERVICE REQUIRED *</label>
+                  <label style={labelStyle}>SELECT SERVICE REQUIRED<span className="req-mark" aria-hidden="true"> *</span></label>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '0.6rem' }}>
                     {servicesList.map((item) => {
                       const IconComponent = item.icon;
@@ -165,11 +166,11 @@ export default function GeneralBookingPage({ config }) {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
                   <div>
-                    <label style={labelStyle}>YOUR NAME *</label>
+                    <label style={labelStyle}>YOUR NAME<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">2-60 letters</span></label>
                     <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Ramesh Kulkarni" style={fieldStyle} />
                   </div>
                   <div>
-                    <label style={labelStyle}>PHONE / WHATSAPP *</label>
+                    <label style={labelStyle}>PHONE / WHATSAPP<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">10-digit mobile number</span></label>
                     <input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+91 98XXX XXXXX" style={fieldStyle} />
                   </div>
                 </div>
@@ -187,7 +188,7 @@ export default function GeneralBookingPage({ config }) {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
                   <div>
-                    <label style={labelStyle}>TRAVEL DATE *</label>
+                    <label style={labelStyle}>TRAVEL DATE<span className="req-mark" aria-hidden="true"> *</span><span className="field-hint">today or later</span></label>
                     <input type="date" required value={formData.travelDate} onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })} style={fieldStyle} />
                   </div>
                   <div>
